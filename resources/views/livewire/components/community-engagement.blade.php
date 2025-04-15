@@ -1,7 +1,7 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
     
-    <section class="py-12 bg-white rounded-lg shadow-md" id="waiting-list">
+    <section class="py-12 bg-white rounded-lg shadow-md">
         <div class="container mx-auto px-4">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">Community Engagement</h2>
@@ -10,7 +10,14 @@
             </div>
             
             <!-- Community Partners and Accolades -->
-            <div class="bg-gradient-to-br from-cyan-50 to-purple-50 rounded-lg p-8 mb-10">
+            <div class="bg-gradient-to-br from-cyan-50 to-purple-50 rounded-lg p-8 mb-10 relative">
+                <!-- "This could be You" Overlay -->
+                <div class="particle-coming-soon-overlay particle-pulse opacity-80 flex text-center justify-center">
+                    2025 Goal!
+                    <br />
+                    This could be You
+                </div>
+                
                 <h3 class="text-2xl font-semibold mb-6 text-center text-gray-800">Our Partners & Accolades</h3>
                 
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-6 items-center justify-items-center mb-8">
@@ -82,7 +89,7 @@
                                 <a href="mailto:info@particle.academy" class="text-cyan-600 hover:underline">info@particle.academy</a>
                             </div>
                         </div>
-                        <div class="flex items-start">
+                        {{-- <div class="flex items-start">
                             <div class="flex-shrink-0 bg-cyan-100 rounded-full p-2 mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -92,7 +99,7 @@
                                 <p class="text-gray-600">Phone</p>
                                 <a href="tel:+11234567890" class="text-cyan-600 hover:underline">(123) 456-7890</a>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="flex items-start">
                             <div class="flex-shrink-0 bg-cyan-100 rounded-full p-2 mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -102,7 +109,7 @@
                             </div>
                             <div>
                                 <p class="text-gray-600">Address</p>
-                                <address class="not-italic text-gray-700">123 Innovation Ave.<br>Springfield, IL 62701</address>
+                                <address class="not-italic text-gray-700">1345 N Jefferson St. #448<br />Milwaukee, WI 53202</address>
                             </div>
                         </div>
                     </div>

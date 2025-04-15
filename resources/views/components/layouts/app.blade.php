@@ -3,7 +3,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
     <title>Particle Academy - The Community Accelerator</title>
+    <meta name="title" content="Particle Academy - The Community Accelerator">
+    <meta name="description" content="Empowering individuals to transform their lives through community, knowledge, and practical skills. Join our waiting list today.">
+    <meta name="keywords" content="community accelerator, entrepreneurship, leadership, digital skills, martial arts, business development, innovation, mentorship">
+    <meta name="author" content="Particle Academy">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:title" content="Particle Academy - The Community Accelerator">
+    <meta property="og:description" content="Empowering individuals to transform their lives through community, knowledge, and practical skills. Join our waiting list today.">
+    <meta property="og:image" content="{{ asset('images/particle1.png') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url('/') }}">
+    <meta property="twitter:title" content="Particle Academy - The Community Accelerator">
+    <meta property="twitter:description" content="Empowering individuals to transform their lives through community, knowledge, and practical skills. Join our waiting list today.">
+    <meta property="twitter:image" content="{{ asset('images/particle1.png') }}">
+    
+    <!-- Canonical link -->
+    <link rel="canonical" href="{{ url('/') }}">
     
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/particle1.png') }}" type="image/png">
@@ -25,5 +48,28 @@
     
     @livewireScripts
     @fluxScripts
+
+    <!-- Structured data for rich search results -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Particle Academy",
+        "description": "The Community Accelerator empowering individuals through mentorship and comprehensive support.",
+        "url": "{{ url('/') }}",
+        "logo": "{{ asset('images/particle1.png') }}",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-123-456-7890",
+            "contactType": "customer service",
+            "email": "info@particle.academy"
+        },
+        "sameAs": [
+            "https://facebook.com/particleacademy",
+            "https://twitter.com/particleacademy",
+            "https://instagram.com/particleacademy"
+        ]
+    }
+    </script>
 </body>
 </html>
