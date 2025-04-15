@@ -1,4 +1,4 @@
-<div class="bg-white rounded-lg shadow-md p-8 border-t-4 border-gradient-to-r from-cyan-400 to-purple-600">
+<div id="waiting-list" class="bg-white rounded-lg shadow-md p-8 border-t-4 border-gradient-to-r from-cyan-400 to-purple-600">
     <div class="mb-6">
         <h3 class="text-2xl font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600 mb-4">Join Our Waiting List</h3>
         

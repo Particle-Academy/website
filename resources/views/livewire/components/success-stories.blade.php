@@ -7,7 +7,14 @@
         </div>
         
         <!-- Success Stories Carousel - Interactive layout -->
-        <div class="mb-16">
+        <div class="mb-16 relative">
+            <!-- "This could be You" Overlay -->
+            <div class="particle-coming-soon-overlay particle-pulse opacity-80 flex text-center justify-center">
+                2025 Goal!
+                <br />
+                This could be You
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Story 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -141,8 +148,15 @@
             </div>
         </div>
         
-        <!-- Impact Statistics -->
-        <div class="bg-white rounded-lg shadow-md p-8">
+        <!-- Our Impact Section with Statistics -->
+        <div class="mb-16 relative">
+            <!-- "This could be You" Overlay -->
+            <div class="particle-coming-soon-overlay particle-pulse opacity-80 flex text-center justify-center">
+                2025 Goal!
+                <br />
+                This could be You
+            </div>
+            
             <h3 class="text-2xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">Our Impact</h3>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">

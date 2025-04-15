@@ -3,6 +3,7 @@
 namespace App\Livewire\Components;
 
 use Livewire\Component;
+use App\Models\WaitingList as WaitingListModel;
 
 class WaitingList extends Component
 {
@@ -28,8 +29,12 @@ class WaitingList extends Component
             'interest' => 'required|array|min:1',
         ]);
         
-        // For now, we'll just reset the form
-        // In a real implementation, you'd save this to a database
+        // Save to the database
+        WaitingListModel::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'interest' => $this->interest,
+        ]);
         
         session()->flash('message', 'Thank you for joining our waiting list!');
         
