@@ -42,10 +42,19 @@
     <!-- Scripts -->
     @vite('resources/js/app.js')
     @fluxAppearance
+    <!-- AOS Animate On Scroll CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>
 <body class="min-h-screen bg-gray-50 font-sans text-gray-900 antialiased">
     {{ $slot }}
-    
+    <!-- Additional Content can be added here -->
+    <div class="mt-8 mb-16 text-center text-gray-500 text-sm">
+        <p><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">©</span> {{ date('Y') }} Particle Academy - The Community Accelerator</p>
+        <nav class="mt-4 flex justify-center space-x-8">
+            <a href="{{ route('coaches') }}" class="text-cyan-600 hover:text-purple-600 font-semibold transition-colors">Coaches</a>
+            <a href="{{ route('partners') }}" class="text-cyan-600 hover:text-purple-600 font-semibold transition-colors">Partners</a>
+        </nav>
+    </div>
     @livewireScripts
     @fluxScripts
 
@@ -71,5 +80,8 @@
         ]
     }
     </script>
+    <!-- AOS Animate On Scroll CDN -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true });</script>
 </body>
 </html>

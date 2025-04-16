@@ -5,7 +5,7 @@
         </div>
         <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-purple-600">The Community Accelerator</h2>
         <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-12 text-slate-600">
-            Empowering individuals to transform their lives through community, knowledge, and practical skills.
+            Empowering individuals to transform their lives through mentorship, mastery, and mindful growth.
         </p>
         <div class="mt-8">
             <a href="#waiting-list" class="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 mb-6">

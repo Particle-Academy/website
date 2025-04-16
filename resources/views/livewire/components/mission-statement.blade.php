@@ -21,7 +21,8 @@
                 <p class="text-lg text-gray-700 mb-6 leading-relaxed">
                     At Particle Academy, our mission is to <span class="font-semibold text-cyan-600">dissolve barriers</span> and 
                     <span class="font-semibold text-purple-600">accelerate community-driven innovation</span> through mentorship 
-                    and comprehensive support.
+                    and comprehensive support.<br>
+                    <span class="font-semibold text-cyan-600">Our work begins in Milwaukee, setting a new standard for what communities can achieve together.</span>
                 </p>
                 
                 <div class="space-y-4">

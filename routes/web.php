@@ -10,6 +10,8 @@ use App\Livewire\Auth\Login;
 
 // Public routes
 Route::get('/', Home::class);
+Route::get('/coaches', App\Livewire\Pages\Coaches::class)->name('coaches');
+Route::get('/partners', App\Livewire\Pages\Partners::class)->name('partners');
 Route::get('/login', Login::class)->name('login');
 
 // Admin routes - protected by auth middleware
