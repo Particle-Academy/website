@@ -1,12 +1,13 @@
 <section class="py-12 bg-white rounded-lg shadow-md">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">Key Features & Benefits</h2>
+        <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
+            <h2 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">What Sets Particle Academy Apart</h2>
+            
             <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full mb-4"></div>
             <p class="text-gray-600 max-w-3xl mx-auto">Discover how our comprehensive approach accelerates your growth and transforms your potential into reality.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
             <!-- Feature 1: Comprehensive Support -->
             <div class="flex">
                 <div class="flex-shrink-0 mr-6">

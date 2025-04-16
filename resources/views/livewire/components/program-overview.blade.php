@@ -2,9 +2,9 @@
     {{-- The best athlete wants his opponent at his best. --}}
     <section class="py-12 bg-gradient-to-br from-cyan-50 to-purple-50 rounded-lg shadow-md">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">Program Overview</h2>
-                <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full mb-4"></div>
+            <div class="text-center mb-10" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">Discover the Pathways to Growth</h2>
+                <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full my-4"></div>
                 <p class="text-gray-600 max-w-3xl mx-auto">The Particle Academy Community Accelerator is designed to empower individuals through a comprehensive approach to personal and professional development.</p>
             </div>
             

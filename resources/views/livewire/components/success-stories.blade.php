@@ -1,7 +1,7 @@
 <section class="py-12 bg-gradient-to-br from-cyan-50 to-purple-50 rounded-lg shadow-md">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">Success Stories & Testimonials</h2>
+        <div class="text-center mb-10" data-aos="fade-up" data-aos-duration="800">
+            <h2 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">Milwaukee’s Stories of Transformation</h2>
             <div class="w-24 h-1 mx-auto bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full mb-4"></div>
             <p class="text-gray-600 max-w-3xl mx-auto">See how our community members have transformed their lives and created meaningful impact.</p>
         </div>
@@ -15,7 +15,7 @@
                 This could be You
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
                 <!-- Story 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="h-48 bg-gradient-to-r from-cyan-400 to-purple-600 relative">

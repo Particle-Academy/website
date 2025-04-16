@@ -1,6 +1,5 @@
-<div id="waiting-list" class="bg-white rounded-lg shadow-md p-8 border-t-4 border-gradient-to-r from-cyan-400 to-purple-600">
+<div  class="bg-white rounded-lg shadow-md p-8 border-t-4 border-gradient-to-r from-cyan-400 to-purple-600">
     <div class="mb-6">
-        <h3 class="text-2xl font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600 mb-4">Join Our Waiting List</h3>
         
         @if (session()->has('message'))
             <div class="bg-cyan-50 border border-cyan-400 text-cyan-700 px-4 py-3 rounded relative mb-4">
@@ -9,7 +8,7 @@
         @endif
     </div>
 
-    <form wire:submit.prevent="submit" class="max-w-3xl mx-auto">
+    <form wire:submit.prevent="submit" class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
         <div class="text-gray-700 text-lg leading-relaxed">
             <p class="mb-6 flex flex-wrap items-center gap-2">
                 Hi, I'm 
