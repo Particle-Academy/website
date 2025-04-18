@@ -50,10 +50,10 @@
     <!-- Additional Content can be added here -->
     <div class="mt-8 mb-16 text-center text-gray-500 text-sm">
         <p><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">©</span> {{ date('Y') }} Particle Academy - The Community Accelerator</p>
-        <nav class="mt-4 flex justify-center space-x-8">
-            <a href="{{ route('coaches') }}" class="text-cyan-600 hover:text-purple-600 font-semibold transition-colors">Coaches</a>
-            <a href="{{ route('partners') }}" class="text-cyan-600 hover:text-purple-600 font-semibold transition-colors">Partners</a>
-        </nav>
+        <flux:navbar class="mt-4 justify-center space-x-8">
+            <flux:navbar.item href="{{ route('coaches') }}" class="text-cyan-600 hover:text-purple-600 font-semibold transition-colors">Coaches</flux:navbar.item>
+            <flux:navbar.item href="{{ route('partners') }}" class="text-cyan-600 hover:text-purple-600 font-semibold transition-colors">Partners</flux:navbar.item>
+        </flux:navbar>
     </div>
     @livewireScripts
     @fluxScripts
@@ -83,5 +83,16 @@
     <!-- AOS Animate On Scroll CDN -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init({ once: true });</script>
+    <!-- Google tag (gtag.js) -->
+    @if(env('APP_ENV') === 'production')
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZCEJMHBR0"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9ZCEJMHBR0');
+    </script>
+    @endif
 </body>
 </html>
