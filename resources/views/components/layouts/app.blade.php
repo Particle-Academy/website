@@ -37,10 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    @vite('resources/css/app.css')
-    
-    <!-- Scripts -->
-    @vite('resources/js/app.js')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @fluxAppearance
     <!-- AOS Animate On Scroll CDN -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
@@ -55,13 +52,12 @@
             <flux:navbar.item href="{{ route('partners') }}" class="text-cyan-600 hover:text-purple-600 font-semibold transition-colors">Partners</flux:navbar.item>
         </flux:navbar>
     </div>
-    @livewireScripts
-    @fluxScripts
+   
 
     <!-- Structured data for rich search results -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
+        "@@context": "https://schema.org",
         "@type": "Organization",
         "name": "Particle Academy",
         "description": "The Community Accelerator empowering individuals through mentorship and comprehensive support.",
@@ -84,7 +80,7 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init({ once: true });</script>
     <!-- Google tag (gtag.js) -->
-    @if(env('APP_ENV') === 'production')
+    @if( env('APP_ENV') === 'production' )
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZCEJMHBR0"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -94,5 +90,8 @@
     gtag('config', 'G-9ZCEJMHBR0');
     </script>
     @endif
+
+    @livewireScripts
+    @fluxScripts
 </body>
 </html>
