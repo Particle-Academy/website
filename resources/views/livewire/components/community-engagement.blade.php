@@ -18,7 +18,7 @@
                     <br />
                     This could be You
                     <br />
-                    <flux:button variant="ghost" icon="heart-handshake" href="/partners" wire:wire:navigate>Partner with Us</flux:button>
+                    <flux:button variant="ghost" icon="heart-handshake" href="/partners" wire:navigate>Partner with Us</flux:button>
 
                 </div>
                 

@@ -1,0 +1,18 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "php",
+            "args": [
+                "artisan",
+                "boost:mcp"
+            ]
+        },
+        "tynn": {
+            "type": "http",
+            "url": "https://tynn.ai/mcp/tynn",
+            "headers": {
+                "Authorization": "Bearer rpk_01KEQZ82QZ57MZH58F6D95WVYY.5eda45049328db94019f13782731e1599036432bf32975a162e33ba7569d5d80"
+            }
+        }
+    }
+}

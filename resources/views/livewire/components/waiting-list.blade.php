@@ -31,7 +31,7 @@
                 
                 and I am interested in 
                 <span class="inline-block">
-                    <flux:select 
+                    {{-- <flux:select 
                         variant="listbox" 
                         multiple 
                         indicator="checkbox"
@@ -41,7 +41,12 @@
                         @foreach($interestOptions as $option)
                             <flux:select.option value="{{ $option }}">{{ $option }}</flux:select.option>
                         @endforeach
-                    </flux:select>
+                    </flux:select> --}}
+                    <select wire:model="interest" multiple class="border-b-2 border-cyan-300 focus:border-purple-500 focus:ring-0 bg-transparent px-1 h-10">
+                        @foreach($interestOptions as $option)
+                            <option value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
+                    </select>
                     <flux:error name="interest" />
                 </span>.
             </p>
