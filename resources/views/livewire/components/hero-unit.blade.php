@@ -11,7 +11,7 @@
             <a href="#waiting-list" class="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 mb-6">
                 Join the Waitlist
             </a>
-            <p class="text-lg italic mb-6 text-slate-600">Coming Fall 2025</p>
+            <p class="text-lg italic mb-6 text-slate-600">Coming Fall 2026</p>
             <div class="flex justify-center space-x-2">
                 <div class="w-3 h-3 rounded-full bg-cyan-300 animate-pulse"></div>
                 <div class="w-3 h-3 rounded-full bg-blue-300 animate-pulse delay-100"></div>

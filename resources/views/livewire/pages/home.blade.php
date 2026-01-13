@@ -7,6 +7,66 @@
         <div class="mt-16 text-center">
             <span class="block text-xl md:text-2xl font-semibold particle-text-gradient">Making Milwaukee a beacon for exponential growth and direct-to-consumer innovation.</span>
         </div>
+
+        <!-- Microsites Navigation -->
+        <div class="mt-12">
+            <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">Explore Particle Academy Projects</h2>
+                    <p class="text-gray-500 mt-2">Discover our specialized platforms and community initiatives.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Tribe Trip -->
+                    <a href="{{ str_replace('://', '://tribe-trip.', config('app.url')) }}" class="group block p-6 bg-amber-50 rounded-xl hover:shadow-lg transition-all border border-amber-100 hover:border-amber-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="bg-white p-2 rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                <flux:icon name="globe-alt" class="w-6 h-6 text-amber-600" />
+                            </div>
+                            <h3 class="font-bold text-amber-900">Tribe Trip</h3>
+                        </div>
+                        <p class="text-sm text-amber-800/80 mb-4">
+                            Smart resource sharing app for small communities.
+                        </p>
+                        <div class="text-amber-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                            Visit Site <flux:icon name="arrow-right" class="w-4 h-4 ml-1" />
+                        </div>
+                    </a>
+
+                    <!-- Laravel Fun Labs -->
+                    <a href="{{ str_replace('://', '://laravel-fun-labs.', config('app.url')) }}" class="group block p-6 bg-indigo-50 rounded-xl hover:shadow-lg transition-all border border-indigo-100 hover:border-indigo-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="bg-white p-2 rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                <flux:icon name="beaker" class="w-6 h-6 text-indigo-600" />
+                            </div>
+                            <h3 class="font-bold text-indigo-900">Laravel Fun Lab</h3>
+                        </div>
+                        <p class="text-sm text-indigo-800/80 mb-4">
+                            Analytics disguised as gamification. Complete gamification package for Laravel.
+                        </p>
+                        <div class="text-indigo-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                            Visit Site <flux:icon name="arrow-right" class="w-4 h-4 ml-1" />
+                        </div>
+                    </a>
+
+                    <!-- Laravel Catalog -->
+                    <a href="{{ str_replace('://', '://laravel-catalog.', config('app.url')) }}" class="group block p-6 bg-red-50 rounded-xl hover:shadow-lg transition-all border border-red-100 hover:border-red-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="bg-white p-2 rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                <flux:icon name="book-open" class="w-6 h-6 text-red-600" />
+                            </div>
+                            <h3 class="font-bold text-red-900">Laravel Catalog</h3>
+                        </div>
+                        <p class="text-sm text-red-800/80 mb-4">
+                            Product and Subscription management catalog with Stripe integration.
+                        </p>
+                        <div class="text-red-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                            Visit Site <flux:icon name="arrow-right" class="w-4 h-4 ml-1" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
         
         <!-- Mission Statement Section -->
         <div class="mt-16">
