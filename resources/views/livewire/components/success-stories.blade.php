@@ -10,7 +10,7 @@
         <div class="mb-16 relative">
             <!-- "This could be You" Overlay -->
             <div class="particle-coming-soon-overlay particle-pulse opacity-80 flex text-center justify-center">
-                2025 Goal!
+                2026 Goal!
                 <br />
                 This could be You
             </div>
@@ -152,7 +152,7 @@
         <div class="mb-16 relative">
             <!-- "This could be You" Overlay -->
             <div class="particle-coming-soon-overlay particle-pulse opacity-80 flex text-center justify-center">
-                2025 Goal!
+                2026 Goal!
                 <br />
                 This could be You
             </div>
