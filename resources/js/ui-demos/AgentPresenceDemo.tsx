@@ -16,7 +16,7 @@ import { SharedWhiteboard } from "@particle-academy/agent-integrations/component
 export function AgentPresenceDemo({ relayBase }: { relayBase: string }) {
   return (
     <SharedWhiteboard
-      shareBaseUrl={relayBase === "" ? null : relayBase}
+      shareBaseUrl={relayBase}
       agent={{ id: "claude", name: "Claude", color: "#a855f7" }}
       initialNotes={[
         { id: "n1", x: 80, y: 80, width: 200, height: 140, color: "#fef9c3", text: "Q4 priorities" },

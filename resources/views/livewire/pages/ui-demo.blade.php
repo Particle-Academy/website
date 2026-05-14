@@ -78,28 +78,15 @@
                 <div
                     class="fancy-demo-mount"
                     data-fancy-demo="{{ $demo['slug'] }}"
-                    data-relay-base="{{ $relayBaseUrl }}"
+                    data-relay-base="/ui/mcp-relay"
                 ></div>
-                @if ($relayBaseUrl === '')
-                    <div class="rounded-xl border border-amber-200 bg-amber-50 p-4 text-[13px] text-amber-900 leading-relaxed">
-                        <strong class="font-semibold">Relay not configured.</strong>
-                        The in-browser MCP server is live, but the share-URL UX needs a public relay broker. Set
-                        <code class="fui-mono text-[12px] bg-amber-100 px-1.5 py-0.5 rounded">MCP_RELAY_BASE_URL</code>
-                        in this site's environment to a deployed instance of
-                        <code class="fui-mono text-[12px] bg-amber-100 px-1.5 py-0.5 rounded">@particle-academy/agent-integrations</code>'s
-                        relay server — see
-                        <a href="https://github.com/Particle-Academy/agent-integrations/blob/main/docs/relay-server.md" target="_blank" rel="noreferrer" class="underline">docs/relay-server.md</a>.
-                    </div>
-                @else
-                    <div class="rounded-xl border border-zinc-200 bg-white p-4 text-[13px] text-zinc-600 leading-relaxed">
-                        <strong class="text-zinc-900 font-semibold">Live MCP surface.</strong>
-                        This demo runs a real
-                        <code class="fui-mono text-[12px] bg-zinc-100 px-1.5 py-0.5 rounded">MicroMcpServer</code>
-                        in your browser. Click <em>Start share</em> to mint a session token and paste the URL into your
-                        MCP client — the agent will drive the surface above in real time. Relay broker:
-                        <code class="fui-mono text-[12px] bg-zinc-100 px-1.5 py-0.5 rounded">{{ $relayBaseUrl }}</code>.
-                    </div>
-                @endif
+                <div class="rounded-xl border border-zinc-200 bg-white p-4 text-[13px] text-zinc-600 leading-relaxed">
+                    <strong class="text-zinc-900 font-semibold">Live MCP surface.</strong>
+                    This demo runs a real
+                    <code class="fui-mono text-[12px] bg-zinc-100 px-1.5 py-0.5 rounded">MicroMcpServer</code>
+                    in your browser. Click <em>Start share</em> to mint a session token and paste the URL into your
+                    MCP client — the agent will drive the surface above in real time.
+                </div>
             @else
                 @foreach ($demo['previews'] as $i => $preview)
                     <div class="rounded-xl border border-zinc-200 bg-white overflow-hidden">
