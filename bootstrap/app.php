@@ -15,6 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
+
+        // MCP relay endpoints accept frames from external agents that
+        // won't carry browser session cookies — exempt them from CSRF.
+        $middleware->validateCsrfTokens(except: [
+            'ui/mcp-relay/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
