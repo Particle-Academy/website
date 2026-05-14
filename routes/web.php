@@ -36,6 +36,15 @@ Route::domain($host)->group(function () {
     Route::get('/ui', Ui::class)->name('ui');
     Route::get('/ui/demos', UiDemos::class)->name('ui.demos');
     Route::get('/ui/demos/{slug}', UiDemo::class)->name('ui.demo');
+
+    // MCP relay broker — bridges browser MicroMcpServer instances in the
+    // /ui/demos/* surfaces to external agents (Claude Code, Cursor, etc.).
+    // CSRF-exempt below in bootstrap/app.php.
+    Route::post('/ui/mcp-relay/register', [\App\Http\Controllers\McpRelayController::class, 'register']);
+    Route::post('/ui/mcp-relay/{session}/unregister', [\App\Http\Controllers\McpRelayController::class, 'unregister']);
+    Route::post('/ui/mcp-relay/{session}/inbox', [\App\Http\Controllers\McpRelayController::class, 'inbox']);
+    Route::post('/ui/mcp-relay/{session}/outbox', [\App\Http\Controllers\McpRelayController::class, 'outbox']);
+    Route::get('/ui/mcp-relay/{session}/events', [\App\Http\Controllers\McpRelayController::class, 'events']);
     Route::get('/login', Login::class)->name('login');
 
     // Admin routes - protected by auth middleware
