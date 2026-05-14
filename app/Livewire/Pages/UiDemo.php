@@ -24,6 +24,7 @@ class UiDemo extends Component
 
         return view('livewire.pages.ui-demo', [
             'demo' => $demo,
+            'relayBaseUrl' => (string) config('mcp.relay_base_url'),
         ]);
     }
 }
