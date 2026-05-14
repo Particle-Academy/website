@@ -49,6 +49,22 @@
                         </div>
                     </a>
 
+                    <!-- Fancy UI -->
+                    <a href="{{ route('ui') }}" class="group block p-6 bg-violet-50 rounded-xl hover:shadow-lg transition-all border border-violet-100 hover:border-violet-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="bg-white p-2 rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                <flux:icon name="sparkles" class="w-6 h-6 text-violet-600" />
+                            </div>
+                            <h3 class="font-bold text-violet-900">Fancy UI</h3>
+                        </div>
+                        <p class="text-sm text-violet-800/80 mb-4">
+                            Human+ UI kit — 10 packages of React, PHP &amp; 3D components for humans and agents sharing one surface.
+                        </p>
+                        <div class="text-violet-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform">
+                            Explore Kit <flux:icon name="arrow-right" class="w-4 h-4 ml-1" />
+                        </div>
+                    </a>
+
                     <!-- Laravel Catalog -->
                     <a href="{{ str_replace('://', '://laravel-catalog.', config('app.url')) }}" class="group block p-6 bg-red-50 rounded-xl hover:shadow-lg transition-all border border-red-100 hover:border-red-200">
                         <div class="flex items-center gap-3 mb-3">

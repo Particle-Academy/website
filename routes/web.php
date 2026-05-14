@@ -11,6 +11,7 @@ use App\Livewire\Pages\Home;
 use App\Livewire\Pages\Privacy;
 use App\Livewire\Pages\Sponsors;
 use App\Livewire\Pages\Terms;
+use App\Livewire\Pages\Ui;
 use Illuminate\Support\Facades\Route;
 
 // Get the host from the app URL for domain routing
@@ -30,6 +31,7 @@ Route::domain($host)->group(function () {
     Route::get('/sponsors', Sponsors::class)->name('sponsors');
     Route::get('/privacy', Privacy::class)->name('privacy');
     Route::get('/terms', Terms::class)->name('terms');
+    Route::get('/ui', Ui::class)->name('ui');
     Route::get('/login', Login::class)->name('login');
 
     // Admin routes - protected by auth middleware
