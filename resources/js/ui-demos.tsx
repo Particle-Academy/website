@@ -35,7 +35,10 @@ function boot() {
       console.warn(`[fancy-demo] no registered component for slug="${slug}"`);
       return;
     }
-    const relayBase = node.dataset.relayBase ?? "/ui/mcp-relay";
+    // Empty string when the site hasn't been wired to a relay broker yet.
+    // The demos render the local in-process MCP server regardless, but
+    // gate the "Start share" UI behind a configured relay.
+    const relayBase = node.dataset.relayBase ?? "";
     const root = createRoot(node);
     root.render(
       <StrictMode>

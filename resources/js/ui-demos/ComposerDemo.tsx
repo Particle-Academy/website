@@ -328,10 +328,16 @@ function ShareCard({
           <button
             type="button"
             onClick={onStart}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-500 hover:bg-violet-600 border border-violet-600 text-white text-[13px] font-medium transition-colors"
+            disabled={relayBase === ""}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-500 hover:bg-violet-600 border border-violet-600 text-white text-[13px] font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Start share
           </button>
+          {relayBase === "" && (
+            <p className="mt-2 text-[11px] text-amber-700">
+              Relay broker isn't configured on this deploy — share UX disabled. The in-page MCP server is still live.
+            </p>
+          )}
         </>
       ) : (
         <>
