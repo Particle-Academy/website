@@ -64,29 +64,51 @@
         </div>
     </section>
 
-    {{-- Preview iframes --}}
+    {{-- Demo body — either a live React mount (for Human+ surfaces with real
+         MCP wiring) or iframes of the design-system prototype HTMLs. --}}
+    @php
+        $reactSlugs = ['composer', 'agent-presence'];
+        $useReact = in_array($demo['slug'], $reactSlugs, true);
+    @endphp
+
     <section class="flex-1 bg-zinc-50/60 py-8">
         <div class="mx-auto max-w-6xl px-6 space-y-4">
-            @foreach ($demo['previews'] as $i => $preview)
-                <div class="rounded-xl border border-zinc-200 bg-white overflow-hidden">
-                    <div class="flex items-center justify-between px-4 py-2 border-b border-zinc-200 bg-zinc-50">
-                        <span class="fui-mono text-[11px] uppercase tracking-wider text-zinc-500">
-                            preview {{ str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) }}
-                        </span>
-                        <a href="{{ asset('ui-previews/' . $preview) }}" target="_blank" rel="noreferrer" class="fui-mono text-[11px] text-zinc-500 hover:text-zinc-700 inline-flex items-center gap-1">
-                            Open standalone
-                            <i data-lucide="external-link" class="w-3 h-3"></i>
-                        </a>
-                    </div>
-                    <iframe
-                        src="{{ asset('ui-previews/' . $preview) }}"
-                        class="w-full border-0 bg-white"
-                        style="height: 480px;"
-                        loading="lazy"
-                        title="{{ $demo['title'] }} – {{ $preview }}"
-                    ></iframe>
+            @if ($useReact)
+                @vite(['resources/js/ui-demos.tsx'])
+                <div
+                    class="fancy-demo-mount"
+                    data-fancy-demo="{{ $demo['slug'] }}"
+                    data-relay-base="/ui/mcp-relay"
+                ></div>
+                <div class="rounded-xl border border-zinc-200 bg-white p-4 text-[13px] text-zinc-600 leading-relaxed">
+                    <strong class="text-zinc-900 font-semibold">Live MCP surface.</strong>
+                    This demo runs a real
+                    <code class="fui-mono text-[12px] bg-zinc-100 px-1.5 py-0.5 rounded">MicroMcpServer</code>
+                    in your browser. Click <em>Start share</em> to mint a session token and paste the URL into your
+                    MCP client — the agent will drive the surface above in real time.
                 </div>
-            @endforeach
+            @else
+                @foreach ($demo['previews'] as $i => $preview)
+                    <div class="rounded-xl border border-zinc-200 bg-white overflow-hidden">
+                        <div class="flex items-center justify-between px-4 py-2 border-b border-zinc-200 bg-zinc-50">
+                            <span class="fui-mono text-[11px] uppercase tracking-wider text-zinc-500">
+                                preview {{ str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) }}
+                            </span>
+                            <a href="{{ asset('ui-previews/' . $preview) }}" target="_blank" rel="noreferrer" class="fui-mono text-[11px] text-zinc-500 hover:text-zinc-700 inline-flex items-center gap-1">
+                                Open standalone
+                                <i data-lucide="external-link" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                        <iframe
+                            src="{{ asset('ui-previews/' . $preview) }}"
+                            class="w-full border-0 bg-white"
+                            style="height: 480px;"
+                            loading="lazy"
+                            title="{{ $demo['title'] }} – {{ $preview }}"
+                        ></iframe>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </section>
 
