@@ -1,0 +1,119 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Tabs & TreeNav</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  body { margin: 0; padding: 14px 16px; background: #fff; font-family: var(--font-sans); color: var(--fg-1); display: grid; grid-template-columns: 220px 1fr 1fr; gap: 14px; align-items: start; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--fg-3); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 6px; }
+
+  /* ── Tabs ─────────────────────────────────── */
+  .tabs { border-bottom: 1px solid #e4e4e7; display: flex; gap: 14px; }
+  .tab { padding: 6px 0; font-size: 12.5px; color: var(--fg-3); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; font-weight: 500; display: inline-flex; align-items: center; gap: 5px; }
+  .tab.active { color: #2563eb; border-bottom-color: #3b82f6; }
+  .tab .pill { font-family: var(--font-mono); font-size: 9.5px; padding: 1px 5px; border-radius: 999px; background: #e4e4e7; color: var(--fg-2); }
+  .tab.active .pill { background: #dbeafe; color: #1d4ed8; }
+  .panel { font-size: 11.5px; color: var(--fg-2); margin-top: 8px; }
+
+  /* ── TreeNav ──────────────────────────────── */
+  .tree { font-size: 13px; line-height: 1.5; color: var(--fg-1); border: 1px solid #e4e4e7; border-radius: 8px; padding: 6px 4px; background: #fff; }
+  .tn { display: flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 6px; cursor: pointer; user-select: none; position: relative; transition: background .15s var(--ease-out); }
+  .tn:hover { background: #f4f4f5; }
+  .tn.sel { background: rgba(59,130,246,.15); color: #2563eb; }
+  .tn.sel:hover { background: rgba(59,130,246,.20); }
+  .tn.disabled { opacity: .4; pointer-events: none; }
+  .tn.dragging { opacity: .5; }
+  .tn .chev { width: 12px; height: 12px; color: var(--fg-3); transition: transform .15s var(--ease-out); }
+  .tn .chev.open { transform: rotate(90deg); }
+  .tn .ico { width: 14px; height: 14px; flex-shrink: 0; }
+  .tn .lbl-txt { font-size: 12.5px; }
+
+  /* Drop indicators (per source) */
+  .drop-before, .drop-after { height: 2px; border-radius: 999px; background: #3b82f6; }
+  .drop-inside { background: rgba(59,130,246,.10); box-shadow: inset 0 0 0 1px rgba(59,130,246,.4); border-radius: 6px; }
+
+  .spacer { width: 12px; flex-shrink: 0; }
+</style></head>
+<body>
+
+  <!-- Column 1: Tabs -->
+  <div>
+    <div class="lbl">Tabs · underline · with count pill</div>
+    <div class="tabs">
+      <div class="tab active">Files <span class="pill">128</span></div>
+      <div class="tab">Logs <span class="pill">3</span></div>
+      <div class="tab">Settings</div>
+    </div>
+    <div class="panel">Active uses brand blue underline + blue text. Count pill flips from zinc to blue-100/blue-700.</div>
+  </div>
+
+  <!-- Column 2: Default TreeNav -->
+  <div>
+    <div class="lbl">TreeNav · default · file/folder · ext colors</div>
+    <div class="tree">
+      <div class="tn"><svg class="chev open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M1 6h14l-1.5 7.5H2.5L1 6z" fill="#fbbf24" opacity=".7"/><path d="M1.5 3.5a1 1 0 011-1h3l1.5 1.5H13a1 1 0 011 1V5H2.5V3.5z" fill="#fbbf24"/></svg>
+        <span class="lbl-txt">src</span></div>
+      <div style="padding-left:14px">
+        <div class="tn"><svg class="chev open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M1 6h14l-1.5 7.5H2.5L1 6z" fill="#fbbf24" opacity=".7"/><path d="M1.5 3.5a1 1 0 011-1h3l1.5 1.5H13a1 1 0 011 1V5H2.5V3.5z" fill="#fbbf24"/></svg>
+          <span class="lbl-txt">components</span></div>
+        <div style="padding-left:14px">
+          <div class="tn sel"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M4 1h5.5L13 4.5V14a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="#3178c6" stroke-width="1.2"/><path d="M9 1v4h4" stroke="#3178c6" stroke-width="1.2"/></svg>
+            <span class="lbl-txt">Action.tsx</span></div>
+          <div class="tn"><span class="spacer"></span>
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M4 1h5.5L13 4.5V14a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="#264de4" stroke-width="1.2"/></svg>
+            <span class="lbl-txt">styles.css</span></div>
+          <div class="tn"><span class="spacer"></span>
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M4 1h5.5L13 4.5V14a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="#71717a" stroke-width="1.2"/></svg>
+            <span class="lbl-txt">README.md</span></div>
+          <div class="tn disabled"><span class="spacer"></span>
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M4 1h5.5L13 4.5V14a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="#a1a1aa" stroke-width="1.2"/></svg>
+            <span class="lbl-txt">legacy.php</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="lbl" style="margin-top:8px">ext colors · ts/tsx · css · json · md · php · yaml</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;font-family:var(--font-mono);font-size:10.5px">
+      <span style="color:#3178c6">●&nbsp;ts/tsx</span>
+      <span style="color:#f7df1e">●&nbsp;js/jsx</span>
+      <span style="color:#264de4">●&nbsp;css</span>
+      <span style="color:#e34c26">●&nbsp;html</span>
+      <span style="color:#777bb4">●&nbsp;php</span>
+      <span style="color:#cb171e">●&nbsp;yaml</span>
+      <span style="color:#71717a">●&nbsp;md/json</span>
+    </div>
+  </div>
+
+  <!-- Column 3: Draggable TreeNav with drop indicators + custom icon -->
+  <div>
+    <div class="lbl">draggable · drop indicators · custom icon · disabled</div>
+    <div class="tree">
+      <div class="tn"><svg class="chev open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M1 6h14l-1.5 7.5H2.5L1 6z" fill="#fbbf24" opacity=".7"/><path d="M1.5 3.5a1 1 0 011-1h3l1.5 1.5H13a1 1 0 011 1V5H2.5V3.5z" fill="#fbbf24"/></svg>
+        <span class="lbl-txt">workspace</span></div>
+      <div style="padding-left:14px">
+        <div class="drop-before" style="margin-left:14px"></div>
+        <div class="tn"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <!-- custom icon override (sparkles) -->
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+          <span class="lbl-txt">Generate report</span></div>
+
+        <div class="tn drop-inside"><svg class="chev open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M1 6h14l-1.5 7.5H2.5L1 6z" fill="#fbbf24" opacity=".7"/><path d="M1.5 3.5a1 1 0 011-1h3l1.5 1.5H13a1 1 0 011 1V5H2.5V3.5z" fill="#fbbf24"/></svg>
+          <span class="lbl-txt">queries</span></div>
+        <div style="padding-left:14px">
+          <div class="tn dragging"><span class="spacer"></span>
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M4 1h5.5L13 4.5V14a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="#3178c6" stroke-width="1.2"/></svg>
+            <span class="lbl-txt">retention.ts</span></div>
+        </div>
+        <div class="drop-after" style="margin-left:14px"></div>
+
+        <div class="tn"><span class="spacer"></span>
+          <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M4 1h5.5L13 4.5V14a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="#a1a1aa" stroke-width="1.2"/></svg>
+          <span class="lbl-txt">config.json</span></div>
+      </div>
+    </div>
+    <div class="lbl" style="margin-top:8px">props · selectedId · expandedIds · indentSize · showIcons · draggable · acceptExternalDrops · onNodeMove · onExternalDrop · onNodeContextMenu</div>
+  </div>
+
+</body></html>

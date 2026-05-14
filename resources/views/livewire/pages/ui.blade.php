@@ -282,8 +282,15 @@
                 <div class="fui-mono text-[11px] uppercase tracking-wider text-zinc-500 mb-3">Live demos</div>
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-3">See it work.</h2>
                 <p class="text-zinc-600 leading-relaxed">
-                    The Laravel monorepo at <a href="https://github.com/Particle-Academy/pa-ux-sandbox" target="_blank" rel="noreferrer" class="fui-mono text-[14px] text-violet-600 hover:underline">pa-ux-sandbox</a> runs every package as one app — clone, <code class="fui-mono text-[13px] bg-zinc-100 px-1.5 py-0.5 rounded">composer run dev</code>, and walk the routes below.
+                    Static demos live on this site at <a href="{{ route('ui.demos') }}" class="fui-mono text-[14px] text-violet-600 hover:underline">/ui/demos</a> — every component rendered with the real design tokens. For the fully interactive React versions, clone the Laravel monorepo at <a href="https://github.com/Particle-Academy/pa-ux-sandbox" target="_blank" rel="noreferrer" class="fui-mono text-[14px] text-violet-600 hover:underline">pa-ux-sandbox</a> and run <code class="fui-mono text-[13px] bg-zinc-100 px-1.5 py-0.5 rounded">composer run dev</code>.
                 </p>
+            </div>
+
+            <div class="mb-6">
+                <a href="{{ route('ui.demos') }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 border border-blue-600 text-white font-medium text-[14px] transition-colors">
+                    Browse all demos
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
 
             <div class="grid md:grid-cols-2 gap-3">

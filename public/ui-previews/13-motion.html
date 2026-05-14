@@ -1,0 +1,167 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Motion</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  body{margin:0;padding:18px 20px;background:#fff;font-family:var(--font-sans);color:#18181b}
+  .grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px}
+  .card{border:1px solid #e4e4e7;border-radius:10px;padding:12px;background:#fff}
+  .name{font-weight:600;font-size:12.5px;margin-bottom:2px;display:flex;align-items:baseline;gap:6px}
+  .name .ms{font-family:var(--font-mono);font-size:10.5px;color:#71717a;font-weight:500}
+  .tok{font-family:var(--font-mono);font-size:10px;color:#a1a1aa;line-height:1.4}
+  .stage{margin-top:9px;height:42px;background:#fafafa;border:1px solid #f4f4f5;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0 8px;overflow:hidden;position:relative}
+  .chip{padding:5px 10px;background:#3b82f6;color:#fff;border-radius:6px;font-size:11.5px;font-weight:500;white-space:nowrap}
+  .chip.ghost{background:#fff;color:#18181b;border:1px solid #e4e4e7}
+  .chip.violet{background:#8b5cf6}
+  .chip.emerald{background:#10b981}
+  .chip.rose{background:#f43f5e}
+
+  /* 1. slide ease-out */
+  .a-slide{position:absolute;left:8px;animation:slide 2.4s cubic-bezier(0.16,1,0.3,1) infinite}
+  @keyframes slide{0%,10%{transform:translateX(0)}55%,65%{transform:translateX(190px)}100%{transform:translateX(0)}}
+
+  /* 2. scale-in popover */
+  .a-pop{animation:pop 2.2s ease-in-out infinite;transform-origin:bottom center}
+  @keyframes pop{0%,30%{opacity:0;transform:scale(.94) translateY(4px)}45%,70%{opacity:1;transform:scale(1) translateY(0)}90%,100%{opacity:0;transform:scale(.94) translateY(4px)}}
+
+  /* 3. slide-up sheet */
+  .a-sheet{animation:sheet 2.6s cubic-bezier(0.22,1,0.36,1) infinite;border-radius:6px 6px 0 0}
+  @keyframes sheet{0%,15%{transform:translateY(36px)}45%,75%{transform:translateY(0)}95%,100%{transform:translateY(36px)}}
+
+  /* 4. spring bounce */
+  .a-spring{animation:spring 2.4s cubic-bezier(0.34,1.56,0.64,1) infinite}
+  @keyframes spring{0%,20%{transform:scale(.6)}50%{transform:scale(1.04)}65%,80%{transform:scale(1)}100%{transform:scale(.6)}}
+
+  /* 5. stagger list */
+  .stagger{display:flex;gap:5px}
+  .stagger .pill{height:20px;width:34px;background:#3b82f6;border-radius:4px;animation:stagup 2s ease-out infinite;opacity:0}
+  .stagger .pill:nth-child(1){animation-delay:0s}
+  .stagger .pill:nth-child(2){animation-delay:.08s}
+  .stagger .pill:nth-child(3){animation-delay:.16s}
+  .stagger .pill:nth-child(4){animation-delay:.24s}
+  @keyframes stagup{0%{opacity:0;transform:translateY(8px)}30%,70%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-2px)}}
+
+  /* 6. cross-fade route */
+  .fade-stack{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+  .fade-stack .chip{position:absolute;animation:fade 3.2s ease-in-out infinite}
+  .fade-stack .chip:nth-child(2){animation-delay:1.6s}
+  @keyframes fade{0%,40%{opacity:1}50%,90%{opacity:0}100%{opacity:1}}
+
+  /* 7. shimmer skeleton */
+  .skel{width:100%;height:10px;border-radius:3px;background:linear-gradient(90deg,#f4f4f5 0%,#e4e4e7 50%,#f4f4f5 100%);background-size:200% 100%;animation:shimmer 1.6s linear infinite}
+  .skel + .skel{margin-top:6px;width:70%}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+  /* 8. pulse dot (live) */
+  .pulse-wrap{display:flex;align-items:center;gap:8px}
+  .pulse{position:relative;width:9px;height:9px;border-radius:999px;background:#10b981}
+  .pulse::after{content:"";position:absolute;inset:0;border-radius:999px;background:#10b981;animation:pulse 1.6s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.6);opacity:0}}
+
+  /* 9. shake (error nudge) */
+  .a-shake{animation:shake 3s cubic-bezier(.36,.07,.19,.97) infinite}
+  @keyframes shake{0%,80%,100%{transform:translateX(0)}82%{transform:translateX(-4px)}84%{transform:translateX(4px)}86%{transform:translateX(-3px)}88%{transform:translateX(3px)}90%{transform:translateX(-1px)}}
+
+  /* 10. spinner */
+  .spin{width:18px;height:18px;border:2px solid #e4e4e7;border-top-color:#3b82f6;border-radius:999px;animation:spin .9s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* 11. typing dots (agent thinking) */
+  .dots{display:flex;gap:4px;align-items:center}
+  .dots span{width:6px;height:6px;border-radius:999px;background:#71717a;animation:dot 1.4s ease-in-out infinite}
+  .dots span:nth-child(2){animation-delay:.18s}
+  .dots span:nth-child(3){animation-delay:.36s}
+  @keyframes dot{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-4px);opacity:1}}
+
+  /* 12. gradient sheen (brand) */
+  .a-sheen{background:linear-gradient(120deg,#7dd3fc,#818cf8,#c4b5fd,#818cf8,#7dd3fc);background-size:300% 100%;animation:sheen 4s linear infinite;color:#0b0f1a}
+  @keyframes sheen{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+  .easings{margin-top:14px;padding:10px 12px;border:1px solid #e4e4e7;border-radius:8px;background:#fafafa;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:11px;color:#52525b;font-family:var(--font-mono)}
+  .easings b{color:#18181b;font-weight:600;margin-right:6px}
+</style></head>
+<body>
+<div class="grid">
+
+  <div class="card">
+    <div class="name">Slide <span class="ms">240ms · ease-out</span></div>
+    <div class="tok">cubic-bezier(0.16, 1, 0.3, 1) · drawers, tabs, focus rings</div>
+    <div class="stage"><div class="chip a-slide">Drawer</div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Scale-in <span class="ms">150ms</span></div>
+    <div class="tok">popovers, dropdowns · scale 0.94 → 1, fade 0 → 1</div>
+    <div class="stage"><div class="chip a-pop">Popover</div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Slide-up sheet <span class="ms">280ms</span></div>
+    <div class="tok">cubic-bezier(0.22, 1, 0.36, 1) · modals, bottom sheets</div>
+    <div class="stage" style="align-items:flex-end;padding:0"><div class="chip a-sheet" style="margin:0 auto">Sheet</div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Spring bounce <span class="ms">340ms</span></div>
+    <div class="tok">cubic-bezier(0.34, 1.56, 0.64, 1) · toasts, badges, +1</div>
+    <div class="stage"><div class="chip violet a-spring">Toast</div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Stagger list <span class="ms">200ms · 80ms step</span></div>
+    <div class="tok">incoming results, table rows · ease-out, delay i × 80</div>
+    <div class="stage"><div class="stagger"><span class="pill"></span><span class="pill"></span><span class="pill"></span><span class="pill"></span></div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Cross-fade route <span class="ms">220ms</span></div>
+    <div class="tok">page / tab transitions · opacity only, no movement</div>
+    <div class="stage"><div class="fade-stack"><div class="chip">Page A</div><div class="chip violet">Page B</div></div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Shimmer skeleton <span class="ms">1600ms · linear</span></div>
+    <div class="tok">loading placeholders · diagonal gradient sweep</div>
+    <div class="stage" style="flex-direction:column;align-items:stretch;padding:9px 12px"><div class="skel"></div><div class="skel"></div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Pulse <span class="ms">1600ms · ease-out</span></div>
+    <div class="tok">live status, presence dots · ring expand + fade</div>
+    <div class="stage"><div class="pulse-wrap"><span class="pulse"></span><span style="font-size:11.5px;color:#52525b">Live · 2 agents</span></div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Shake <span class="ms">400ms</span></div>
+    <div class="tok">invalid field nudge · 5-step horizontal jitter</div>
+    <div class="stage"><div class="chip rose a-shake">Try again</div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Spinner <span class="ms">900ms · linear</span></div>
+    <div class="tok">indeterminate progress · 2px ring, brand stroke</div>
+    <div class="stage"><div class="spin"></div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Typing dots <span class="ms">1400ms</span></div>
+    <div class="tok">agent thinking · ease-in-out, 180ms stagger</div>
+    <div class="stage"><div class="dots"><span></span><span></span><span></span></div></div>
+  </div>
+
+  <div class="card">
+    <div class="name">Brand sheen <span class="ms">4000ms · linear</span></div>
+    <div class="tok">hero CTAs, generating states · sky→indigo→violet sweep</div>
+    <div class="stage"><div class="chip a-sheen">Generate</div></div>
+  </div>
+
+</div>
+
+<div class="easings">
+  <span><b>ease-out</b> cubic-bezier(0.16, 1, 0.3, 1)</span>
+  <span><b>ease-in-out</b> cubic-bezier(0.4, 0, 0.2, 1)</span>
+  <span><b>spring</b> cubic-bezier(0.34, 1.56, 0.64, 1)</span>
+  <span><b>sheet</b> cubic-bezier(0.22, 1, 0.36, 1)</span>
+  <span><b>linear</b> shimmer · spinner only</span>
+</div>
+
+</body></html>

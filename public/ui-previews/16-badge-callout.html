@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Badge & Callout</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  body{margin:0;padding:22px 24px;background:#fff;font-family:var(--font-sans);color:var(--fg-1)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  .b{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;font-size:12px;font-weight:500;border-radius:999px;border:1px solid transparent;line-height:18px}
+  .b.solid.blue{background:#3b82f6;color:#fff;border-color:#2563eb}
+  .b.solid.emerald{background:#10b981;color:#fff;border-color:#059669}
+  .b.soft.blue{background:#dbeafe;color:#1d4ed8}
+  .b.soft.emerald{background:#d1fae5;color:#047857}
+  .b.soft.amber{background:#fef3c7;color:#b45309}
+  .b.soft.rose{background:#ffe4e6;color:#be123c}
+  .b.outline{background:#fff;color:#3f3f46;border-color:#d4d4d8}
+  .dot{width:6px;height:6px;border-radius:99px;background:currentColor}
+  .callout{display:flex;gap:10px;border:1px solid #bae6fd;background:#f0f9ff;border-radius:10px;padding:11px 12px}
+  .callout .icon{width:18px;height:18px;flex:0 0 auto;color:#0284c7}
+  .callout h5{margin:0 0 2px;font-size:13px;font-weight:600;color:#0c4a6e}
+  .callout p{margin:0;font-size:12px;color:#075985}
+  svg{width:100%;height:100%;stroke:currentColor;stroke-width:2;fill:none}
+</style></head>
+<body>
+  <div class="row">
+    <span class="b solid blue">Active</span>
+    <span class="b solid emerald">Synced</span>
+    <span class="b soft blue">v3.0</span>
+    <span class="b soft emerald"><span class="dot"></span>Running</span>
+    <span class="b soft amber">Beta</span>
+    <span class="b soft rose">Deprecated</span>
+    <span class="b outline">Draft</span>
+  </div>
+  <div class="callout">
+    <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div><h5>Schema-driven page</h5><p>This page renders <code style="font-family:var(--font-mono)">&lt;Screen schema={page.props.schema} /&gt;</code> — the Laravel controller is the source of truth.</p></div>
+  </div>
+</body></html>

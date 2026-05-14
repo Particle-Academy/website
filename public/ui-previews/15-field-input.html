@@ -1,0 +1,245 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Field & Input</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { margin: 0; padding: 14px 16px; background: #fff; font-family: var(--font-sans); color: var(--fg-1); font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  label { font-size: 11.5px; font-weight: 500; color: var(--fg-2); display: flex; align-items: center; gap: 6px; }
+  label .opt { font-weight: 400; color: var(--fg-3); font-size: 10.5px; }
+  .help { font-size: 10.5px; color: var(--fg-3); }
+  .help.err { color: #dc2626; }
+  .help.ok { color: #059669; }
+
+  /* Base input */
+  .inp { font-family: inherit; font-size: 13px; padding: 7px 10px; border-radius: 7px; border: 1px solid #e4e4e7; background: #fff; color: var(--fg-1); transition: border-color .15s var(--ease-out), box-shadow .15s var(--ease-out); width: 100%; box-sizing: border-box; }
+  .inp:focus, .focused { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+  .inp.err { border-color: #ef4444; }
+  .inp.err:focus, .inp.err.focused { box-shadow: 0 0 0 3px rgba(239,68,68,.15); }
+  .inp:disabled, .inp.disabled { background: #fafafa; color: var(--fg-3); cursor: not-allowed; }
+
+  /* Adornment row (icon, prefix, suffix) */
+  .adorned { display: flex; align-items: stretch; border: 1px solid #e4e4e7; border-radius: 7px; background: #fff; transition: border-color .15s var(--ease-out), box-shadow .15s var(--ease-out); overflow: hidden; }
+  .adorned.focused { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+  .adorned .adorn { display: inline-flex; align-items: center; padding: 0 10px; color: var(--fg-3); background: #fafafa; font-family: var(--font-mono); font-size: 11.5px; border-right: 1px solid #e4e4e7; }
+  .adorned .adorn.right { border-right: none; border-left: 1px solid #e4e4e7; }
+  .adorned input { flex: 1; border: none; outline: none; padding: 7px 10px; font: inherit; background: transparent; min-width: 0; }
+  .adorned .ico { padding-right: 0; padding-left: 10px; background: transparent; border: none; }
+
+  /* Switch */
+  .switch { display: inline-flex; align-items: center; gap: 8px; }
+  .track { width: 30px; height: 18px; border-radius: 999px; background: #e4e4e7; position: relative; transition: background .2s var(--ease-out); cursor: pointer; }
+  .track.on { background: #3b82f6; }
+  .thumb { position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; background: #fff; border-radius: 999px; box-shadow: 0 1px 2px rgba(0,0,0,.2); transition: transform .2s var(--ease-out); }
+  .track.on .thumb { transform: translateX(12px); }
+
+  /* Checkbox + radio */
+  .cb, .rd { width: 16px; height: 16px; border: 1.5px solid #d4d4d8; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; background: #fff; }
+  .cb.on { background: #3b82f6; border-color: #2563eb; color: #fff; }
+  .rd { border-radius: 999px; }
+  .rd.on { border-color: #3b82f6; border-width: 5px; }
+  .check-row { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+
+  /* OTP */
+  .otp { display: flex; gap: 6px; }
+  .otp input { width: 30px; height: 36px; text-align: center; font-family: var(--font-mono); font-size: 15px; padding: 0; border: 1px solid #e4e4e7; border-radius: 6px; background: #fff; }
+  .otp input.cur { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+
+  /* Pillbox */
+  .pillbox { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px 6px; border: 1px solid #e4e4e7; border-radius: 7px; min-height: 30px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 5px 2px 7px; font-size: 11.5px; border-radius: 5px; background: #f4f4f5; color: var(--fg-1); }
+  .pill .x { color: var(--fg-3); cursor: pointer; padding: 0 2px; border-radius: 3px; }
+  .pill.brand { background: #dbeafe; color: #1d4ed8; }
+  .pillbox input { flex: 1; min-width: 60px; border: none; outline: none; font: inherit; background: transparent; padding: 4px; }
+
+  /* Color picker swatch */
+  .swatches { display: flex; gap: 6px; align-items: center; }
+  .sw { width: 22px; height: 22px; border-radius: 6px; cursor: pointer; border: 2px solid transparent; transition: transform .15s var(--ease-out); }
+  .sw:hover { transform: scale(1.1); }
+  .sw.sel { border-color: #0a0a0c; box-shadow: 0 0 0 2px #fff inset; }
+
+  /* File upload */
+  .drop { border: 1.5px dashed #d4d4d8; border-radius: 8px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; background: #fafafa; color: var(--fg-2); font-size: 11.5px; }
+  .drop.active { border-color: #3b82f6; border-style: solid; background: #eff6ff; color: #1d4ed8; }
+
+  /* Slider */
+  .slider { display: flex; align-items: center; gap: 8px; }
+  .slider .rail { flex: 1; height: 4px; border-radius: 999px; background: #e4e4e7; position: relative; }
+  .slider .fill { position: absolute; top: 0; bottom: 0; left: 0; width: 62%; background: #3b82f6; border-radius: 999px; }
+  .slider .knob { position: absolute; top: 50%; left: 62%; transform: translate(-50%,-50%); width: 14px; height: 14px; background: #fff; border: 2px solid #3b82f6; border-radius: 999px; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  .slider .val { font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); min-width: 30px; text-align: right; }
+
+  /* Autocomplete dropdown */
+  .autoc { position: relative; }
+  .autoc .menu { position: absolute; top: 100%; margin-top: 4px; left: 0; right: 0; background: #fff; border: 1px solid #e4e4e7; border-radius: 7px; box-shadow: 0 8px 24px -8px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06); z-index: 5; max-height: 140px; overflow: auto; }
+  .autoc .opt { padding: 6px 10px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+  .autoc .opt:hover, .autoc .opt.hl { background: #eff6ff; color: #1d4ed8; }
+  .autoc .opt .sub { color: var(--fg-3); margin-left: auto; font-size: 10.5px; font-family: var(--font-mono); }
+
+  /* Textarea */
+  textarea.inp { resize: vertical; min-height: 50px; font-family: inherit; line-height: 1.45; }
+
+  /* Select arrow */
+  .sel-wrap { position: relative; }
+  .sel-wrap select { appearance: none; padding-right: 28px; }
+  .sel-wrap .caret { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: var(--fg-3); pointer-events: none; }
+
+  [data-lucide] svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  [data-lucide] { display: inline-flex; }
+</style></head>
+<body>
+
+  <div class="grid">
+
+    <!-- text -->
+    <div class="field">
+      <label>Workspace name</label>
+      <input class="inp" value="Particle Academy">
+    </div>
+
+    <!-- with prefix/suffix -->
+    <div class="field">
+      <label>Slug</label>
+      <div class="adorned focused">
+        <span class="adorn">fancy.dev/</span>
+        <input value="particle-academy">
+        <span class="adorn right" style="color:#059669"><i data-lucide="check"></i></span>
+      </div>
+    </div>
+
+    <!-- password -->
+    <div class="field">
+      <label>API token <span class="opt">— hidden</span></label>
+      <div class="adorned">
+        <input type="password" value="rfk_a9f1c2b8e4d6">
+        <span class="adorn right ico"><i data-lucide="eye"></i></span>
+      </div>
+    </div>
+
+    <!-- error -->
+    <div class="field">
+      <label>Email</label>
+      <input class="inp err" value="aria@particle">
+      <span class="help err">Enter a valid email address.</span>
+    </div>
+
+    <!-- search -->
+    <div class="field">
+      <label>Search</label>
+      <div class="adorned">
+        <span class="adorn ico" style="padding-right:6px"><i data-lucide="search"></i></span>
+        <input placeholder="Find a workspace, file, person…">
+        <span class="adorn right"><kbd style="font-family:var(--font-mono);font-size:10px;background:#f4f4f5;padding:1px 5px;border-radius:4px;color:var(--fg-3)">⌘K</kbd></span>
+      </div>
+    </div>
+
+    <!-- number stepper -->
+    <div class="field">
+      <label>Max agents</label>
+      <div class="adorned" style="width:fit-content">
+        <button class="adorn ico" style="cursor:pointer;background:#fafafa;border-right:1px solid #e4e4e7"><i data-lucide="minus"></i></button>
+        <input value="8" style="width:48px;text-align:center;font-family:var(--font-mono)">
+        <button class="adorn ico" style="cursor:pointer;background:#fafafa;border-left:1px solid #e4e4e7;border-right:none"><i data-lucide="plus"></i></button>
+      </div>
+    </div>
+
+    <!-- select -->
+    <div class="field">
+      <label>Region</label>
+      <div class="sel-wrap">
+        <select class="inp"><option>us-east-1 · Virginia</option><option>eu-west-1 · Dublin</option></select>
+        <i data-lucide="chevron-down" class="caret"></i>
+      </div>
+    </div>
+
+    <!-- autocomplete -->
+    <div class="field">
+      <label>Assignee</label>
+      <div class="autoc">
+        <div class="adorned focused">
+          <input value="ar">
+          <span class="adorn right ico"><i data-lucide="chevron-down"></i></span>
+        </div>
+        <div class="menu">
+          <div class="opt hl">Aria Kennedy <span class="sub">@aria</span></div>
+          <div class="opt">Arjun Reddy <span class="sub">@arjun</span></div>
+          <div class="opt">Marco Aratani <span class="sub">@marco</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pillbox / tags -->
+    <div class="field">
+      <label>Tags <span class="opt">— Pillbox</span></label>
+      <div class="pillbox">
+        <span class="pill brand">design<span class="x">×</span></span>
+        <span class="pill">agents<span class="x">×</span></span>
+        <span class="pill">handoff<span class="x">×</span></span>
+        <input placeholder="Add tag…">
+      </div>
+    </div>
+
+    <!-- OTP -->
+    <div class="field">
+      <label>One-time code <span class="opt">— OtpInput</span></label>
+      <div class="otp">
+        <input value="4"><input value="7"><input value="2"><input value="9" class="cur"><input value=""><input value="">
+      </div>
+    </div>
+
+    <!-- file upload -->
+    <div class="field">
+      <label>Upload <span class="opt">— FileUpload</span></label>
+      <div class="drop active">
+        <i data-lucide="upload-cloud" style="color:#3b82f6"></i>
+        <div>Drop files or <span style="text-decoration:underline">browse</span> · PDF, PNG ≤ 10 MB</div>
+      </div>
+    </div>
+
+    <!-- color picker -->
+    <div class="field">
+      <label>Accent color <span class="opt">— ColorPicker</span></label>
+      <div class="swatches">
+        <span class="sw" style="background:#3b82f6"></span>
+        <span class="sw sel" style="background:#8b5cf6"></span>
+        <span class="sw" style="background:#10b981"></span>
+        <span class="sw" style="background:#f59e0b"></span>
+        <span class="sw" style="background:#ef4444"></span>
+        <span class="sw" style="background:#0ea5e9"></span>
+        <span class="sw" style="background:linear-gradient(135deg,#7dd3fc,#818cf8,#c4b5fd)"></span>
+      </div>
+    </div>
+
+    <!-- slider -->
+    <div class="field">
+      <label>Temperature</label>
+      <div class="slider">
+        <span class="val" style="text-align:left">0</span>
+        <div class="rail"><div class="fill"></div><div class="knob"></div></div>
+        <span class="val">0.62</span>
+      </div>
+    </div>
+
+    <!-- switch + check + radio -->
+    <div class="field">
+      <label>Preferences</label>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <span class="switch"><span class="track on"><span class="thumb"></span></span><span style="font-size:12px">Auto-sync</span></span>
+        <span class="check-row"><span class="cb on"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Email</span>
+        <span class="check-row"><span class="rd on"></span>Real-time</span>
+        <span class="check-row"><span class="rd"></span>Digest</span>
+      </div>
+    </div>
+
+    <!-- textarea spans both columns -->
+    <div class="field" style="grid-column:1 / -1">
+      <label>Description <span class="opt">— optional · 240 / 500</span></label>
+      <textarea class="inp" rows="2">Human+ design tools that pair an MCP-aware agent with live React surfaces — boards, sheets, code, flows.</textarea>
+      <span class="help">Markdown supported. Press <kbd style="font-family:var(--font-mono);font-size:10px;background:#f4f4f5;padding:1px 4px;border-radius:3px">⌘↵</kbd> to save.</span>
+    </div>
+
+  </div>
+
+<script>setTimeout(() => window.lucide && window.lucide.createIcons(), 30);</script>
+</body></html>
