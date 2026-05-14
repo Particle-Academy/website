@@ -1,0 +1,156 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Action button</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root {
+    --blue-500:#3b82f6;--blue-600:#2563eb;
+    --emerald-500:#10b981;--emerald-600:#059669;
+    --amber-500:#f59e0b;--amber-600:#d97706;
+    --red-500:#ef4444;--red-600:#dc2626;
+    --violet-500:#8b5cf6;--violet-600:#7c3aed;
+    --indigo-500:#6366f1;--indigo-600:#4f46e5;
+    --sky-500:#0ea5e9;--sky-600:#0284c7;
+    --rose-500:#f43f5e;--rose-600:#e11d48;
+    --orange-500:#f97316;--orange-600:#ea580c;
+    --zinc-500:#71717a;--zinc-600:#52525b;
+  }
+  body { margin: 0; padding: 18px 20px; background: #fff; font-family: var(--font-sans); color: var(--fg-1); }
+  .lbl { font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-3); margin: 14px 0 6px; text-transform: uppercase; letter-spacing: .04em; }
+  .lbl:first-child { margin-top: 0; }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+  .a { display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+       font-family: inherit; font-weight: 500; font-size: 13px; line-height: 1;
+       padding: 6px 11px; border-radius: 8px; border: 1px solid transparent;
+       cursor: pointer; transition: background .2s var(--ease-out), border-color .2s var(--ease-out), transform .15s var(--ease-out); }
+  .a:hover { filter: brightness(0.94); }
+  .a:active { transform: scale(0.97); }
+
+  /* Solid color variants */
+  .blue    { background: var(--blue-500);    color:#fff; border-color: var(--blue-600); }
+  .emerald { background: var(--emerald-500); color:#fff; border-color: var(--emerald-600); }
+  .amber   { background: var(--amber-500);   color:#fff; border-color: var(--amber-600); }
+  .red     { background: var(--red-500);     color:#fff; border-color: var(--red-600); }
+  .violet  { background: var(--violet-500);  color:#fff; border-color: var(--violet-600); }
+  .indigo  { background: var(--indigo-500);  color:#fff; border-color: var(--indigo-600); }
+  .sky     { background: var(--sky-500);     color:#fff; border-color: var(--sky-600); }
+  .rose    { background: var(--rose-500);    color:#fff; border-color: var(--rose-600); }
+  .orange  { background: var(--orange-500);  color:#fff; border-color: var(--orange-600); }
+  .zinc    { background: var(--zinc-500);    color:#fff; border-color: var(--zinc-600); }
+  .default { background:#fff; color:#3f3f46; border-color:#e4e4e7; }
+  .warn    { background:#fffbeb; color:#b45309; border-color:#fde68a; }
+
+  /* Ghost variants */
+  .ghost           { background: transparent; }
+  .ghost.blue      { color: var(--blue-600);    border-color: transparent; }
+  .ghost.blue:hover{ background:#eff6ff; }
+  .ghost.emerald   { color: var(--emerald-600); border-color: transparent; }
+  .ghost.emerald:hover{ background:#ecfdf5; }
+  .ghost.red       { color: var(--red-600);     border-color: transparent; }
+  .ghost.red:hover { background:#fef2f2; }
+  .ghost.violet    { color: var(--violet-600);  border-color: transparent; }
+  .ghost.violet:hover{ background:#f5f3ff; }
+  .ghost.default   { color:#3f3f46; border-color: transparent; }
+  .ghost.default:hover{ background:#fafafa; }
+
+  /* Sizes */
+  .xs { padding: 3px 7px;  font-size: 11px; gap: 4px; }
+  .sm { padding: 4px 9px;  font-size: 12px; }
+  .lg { padding: 9px 15px; font-size: 15px; gap: 8px; }
+
+  /* Circle */
+  .circle { width: 30px; height: 30px; padding: 0; border-radius: 999px; }
+  .circle.lg { width: 38px; height: 38px; }
+
+  /* Pulsing alert */
+  .alert { position: relative; }
+  .alert::after { content:""; position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; border-radius: 999px; background:#ef4444; box-shadow: 0 0 0 2px #fff; animation: ping 1.4s cubic-bezier(0,0,.2,1) infinite; }
+  @keyframes ping { 0% { transform: scale(1); opacity: 1; } 75%,100% { transform: scale(1.8); opacity: 0; } }
+  .alert::before { content:""; position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; border-radius: 999px; background:#ef4444; box-shadow: 0 0 0 2px #fff; }
+
+  /* Decorations inside button */
+  .avatar { width: 18px; height: 18px; border-radius: 999px; object-fit: cover; flex-shrink: 0; }
+  .badge { display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: rgba(255,255,255,.22); color: inherit; }
+  .badge.on-light { background:#e4e4e7; color:#3f3f46; }
+  .emoji { font-size: 14px; line-height: 1; }
+  .a svg, [data-lucide] svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .lg [data-lucide] svg { width: 16px; height: 16px; }
+  .xs [data-lucide] svg, .sm [data-lucide] svg { width: 12px; height: 12px; }
+  [data-lucide] { display: inline-flex; }
+
+  .spinner { width: 12px; height: 12px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 999px; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .group { display: inline-flex; align-items: center; }
+  .group .a { border-radius: 0; margin-left: -1px; }
+  .group .a:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; margin-left: 0; }
+  .group .a:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+  .group .a.active { background:#3b82f6; color:#fff; border-color:#2563eb; z-index:1; }
+</style></head>
+<body>
+
+  <div class="lbl">10 named colors · solid variant</div>
+  <div class="row">
+    <button class="a blue">Blue</button>
+    <button class="a emerald">Emerald</button>
+    <button class="a amber">Amber</button>
+    <button class="a red">Red</button>
+    <button class="a violet">Violet</button>
+    <button class="a indigo">Indigo</button>
+    <button class="a sky">Sky</button>
+    <button class="a rose">Rose</button>
+    <button class="a orange">Orange</button>
+    <button class="a zinc">Zinc</button>
+  </div>
+
+  <div class="lbl">Decorations · icon · emoji · avatar · badge · trailing chevron</div>
+  <div class="row">
+    <button class="a blue"><i data-lucide="pencil"></i>Edit</button>
+    <button class="a default"><span class="emoji">🎨</span>Theme</button>
+    <button class="a default"><img class="avatar" src="assets/avatar-1.svg" alt="">Aria K.</button>
+    <button class="a violet">Messages<span class="badge">12</span></button>
+    <button class="a default">More<i data-lucide="chevron-down"></i></button>
+    <button class="a emerald"><i data-lucide="check"></i>Saved<span class="badge">v4</span></button>
+  </div>
+
+  <div class="lbl">States · active · checked · warn · alert · loading · disabled</div>
+  <div class="row">
+    <button class="a blue"><i data-lucide="bell"></i>Active</button>
+    <button class="a emerald"><i data-lucide="check"></i>Checked</button>
+    <button class="a warn"><i data-lucide="triangle-alert"></i>Quota near</button>
+    <button class="a default alert"><i data-lucide="inbox"></i>Inbox</button>
+    <button class="a indigo"><span class="spinner"></span>Generating…</button>
+    <button class="a default" disabled style="opacity:.5;cursor:not-allowed"><i data-lucide="lock"></i>Locked</button>
+  </div>
+
+  <div class="lbl">Ghost variant · same 10 colors, transparent fill</div>
+  <div class="row">
+    <button class="a ghost blue"><i data-lucide="link-2"></i>Copy link</button>
+    <button class="a ghost emerald"><i data-lucide="circle-check"></i>Approve</button>
+    <button class="a ghost red"><i data-lucide="trash-2"></i>Delete</button>
+    <button class="a ghost violet"><i data-lucide="sparkles"></i>Ask AI</button>
+    <button class="a ghost default"><i data-lucide="ellipsis"></i></button>
+  </div>
+
+  <div class="lbl">Circle · xs · sm · md · lg — for icon-only actions</div>
+  <div class="row">
+    <button class="a default circle xs"><i data-lucide="plus"></i></button>
+    <button class="a default circle sm"><i data-lucide="search"></i></button>
+    <button class="a blue circle"><i data-lucide="plus"></i></button>
+    <button class="a violet circle alert"><i data-lucide="bell"></i></button>
+    <button class="a default circle lg"><img class="avatar" style="width:22px;height:22px" src="assets/avatar-2.svg" alt=""></button>
+
+    <span style="width:14px"></span>
+
+    <div class="group">
+      <button class="a default active">Day</button>
+      <button class="a default">Week</button>
+      <button class="a default">Month</button>
+    </div>
+  </div>
+
+<script>
+  setTimeout(() => window.lucide && window.lucide.createIcons(), 30);
+</script>
+</body></html>

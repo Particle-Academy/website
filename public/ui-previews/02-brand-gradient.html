@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Brand gradient</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  body{margin:0;padding:24px;display:flex;flex-direction:column;gap:14px;background:#fff;font-family:var(--font-sans)}
+  .strip{height:64px;border-radius:12px;background:linear-gradient(110deg,#7dd3fc 0%,#818cf8 50%,#c4b5fd 100%)}
+  .stops{display:flex;gap:10px;align-items:center}
+  .stop{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;color:var(--fg-2)}
+  .dot{width:28px;height:28px;border-radius:8px;border:1px solid rgba(0,0,0,.08)}
+  .word{font-size:48px;font-weight:600;letter-spacing:-0.02em;line-height:1;background:linear-gradient(110deg,#7dd3fc 0%,#818cf8 50%,#c4b5fd 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+</style></head>
+<body>
+  <div class="strip"></div>
+  <div class="stops">
+    <div class="stop"><div class="dot" style="background:#7dd3fc"></div>sky-300 · #7dd3fc</div>
+    <div class="stop"><div class="dot" style="background:#818cf8"></div>indigo-400 · #818cf8</div>
+    <div class="stop"><div class="dot" style="background:#c4b5fd"></div>violet-300 · #c4b5fd</div>
+  </div>
+  <div class="word">Human+ UX</div>
+</body></html>

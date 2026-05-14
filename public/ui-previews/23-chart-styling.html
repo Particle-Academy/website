@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Chart styling</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  body{margin:0;padding:22px 24px;background:#fff;font-family:var(--font-sans);color:var(--fg-1)}
+  .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .card{border:1px solid #e4e4e7;border-radius:10px;padding:11px}
+  h6{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--fg-3);font-weight:600}
+  svg{display:block;width:100%;height:90px;overflow:visible}
+  .axis text{font-family:var(--font-mono);font-size:9px;fill:var(--fg-3)}
+</style></head>
+<body>
+<div class="row">
+  <div class="card"><h6>Bar · per-datum color</h6>
+    <svg viewBox="0 0 200 100">
+      <rect x="10" y="40" width="22" height="50" rx="3" fill="#3b82f6"/>
+      <rect x="40" y="20" width="22" height="70" rx="3" fill="#10b981"/>
+      <rect x="70" y="55" width="22" height="35" rx="3" fill="#3b82f6"/>
+      <rect x="100" y="30" width="22" height="60" rx="3" fill="#10b981"/>
+      <rect x="130" y="65" width="22" height="25" rx="3" fill="#3b82f6"/>
+      <rect x="160" y="10" width="22" height="80" rx="3" fill="#10b981"/>
+    </svg>
+  </div>
+  <div class="card"><h6>Line · sparkline</h6>
+    <svg viewBox="0 0 200 100">
+      <polyline fill="none" stroke="#6366f1" stroke-width="2" points="0,80 25,72 50,60 75,65 100,40 125,52 150,30 175,38 200,15"/>
+      <polyline fill="rgba(99,102,241,.10)" stroke="none" points="0,80 25,72 50,60 75,65 100,40 125,52 150,30 175,38 200,15 200,100 0,100"/>
+      <circle cx="200" cy="15" r="3.5" fill="#6366f1"/>
+    </svg>
+  </div>
+  <div class="card"><h6>Donut</h6>
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#e4e4e7" stroke-width="14"/>
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#3b82f6" stroke-width="14" stroke-dasharray="100 213" transform="rotate(-90 50 50)"/>
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#8b5cf6" stroke-width="14" stroke-dasharray="55 213" stroke-dashoffset="-100" transform="rotate(-90 50 50)"/>
+      <text x="50" y="48" text-anchor="middle" font-family="Geist" font-size="14" font-weight="600" fill="#18181b">62%</text>
+      <text x="50" y="62" text-anchor="middle" font-family="Geist Mono" font-size="8" fill="#71717a">share</text>
+    </svg>
+  </div>
+</div>
+</body></html>

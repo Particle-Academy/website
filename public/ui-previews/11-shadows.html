@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Shadow scale</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  body{margin:0;padding:30px 24px 24px;background:#fafafa;font-family:var(--font-sans)}
+  .row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .col{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .box{width:100%;height:56px;background:#fff;border-radius:10px;border:1px solid rgba(0,0,0,.04)}
+  .name{font-size:12px;font-weight:600}
+  .tok{font-family:var(--font-mono);font-size:11px;color:var(--fg-3);text-align:center}
+</style></head>
+<body>
+<div class="row">
+  <div class="col"><div class="box" style="box-shadow:0 1px 2px rgba(0,0,0,.04)"></div><div class="name">xs</div><div class="tok">resting</div></div>
+  <div class="col"><div class="box" style="box-shadow:0 1px 2px rgba(0,0,0,.05),0 1px 3px rgba(0,0,0,.06)"></div><div class="name">sm</div><div class="tok">hover lift</div></div>
+  <div class="col"><div class="box" style="box-shadow:0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -2px rgba(0,0,0,.05)"></div><div class="name">md</div><div class="tok">tooltips</div></div>
+  <div class="col"><div class="box" style="box-shadow:0 10px 15px -3px rgba(0,0,0,.08),0 4px 6px -4px rgba(0,0,0,.05)"></div><div class="name">lg</div><div class="tok">dropdowns</div></div>
+  <div class="col"><div class="box" style="box-shadow:0 20px 25px -5px rgba(0,0,0,.10),0 8px 10px -6px rgba(0,0,0,.08)"></div><div class="name">xl</div><div class="tok">modals</div></div>
+</div>
+</body></html>
