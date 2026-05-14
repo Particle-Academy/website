@@ -78,14 +78,12 @@
                 <div
                     class="fancy-demo-mount"
                     data-fancy-demo="{{ $demo['slug'] }}"
-                    data-relay-base="/ui/mcp-relay"
                 ></div>
                 <div class="rounded-xl border border-zinc-200 bg-white p-4 text-[13px] text-zinc-600 leading-relaxed">
                     <strong class="text-zinc-900 font-semibold">Live MCP surface.</strong>
                     This demo runs a real
                     <code class="fui-mono text-[12px] bg-zinc-100 px-1.5 py-0.5 rounded">MicroMcpServer</code>
-                    in your browser. Click <em>Start share</em> to mint a session token and paste the URL into your
-                    MCP client — the agent will drive the surface above in real time.
+                    in your browser. External agents connect peer-to-peer over a WebRTC data channel — no backend, no relay service. Generate the SDP offer below and paste it into your agent's bridge.
                 </div>
             @else
                 @foreach ($demo['previews'] as $i => $preview)
