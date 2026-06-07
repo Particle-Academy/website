@@ -17,9 +17,9 @@ class WaitingListRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:2'],
             'email' => ['required', 'email'],
-            'interest' => ['required', 'array', 'min:1'],
+            'name' => ['nullable', 'string', 'min:2'],
+            'interest' => ['nullable', 'array'],
             'interest.*' => ['string'],
         ];
     }

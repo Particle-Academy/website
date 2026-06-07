@@ -10,8 +10,14 @@ class WaitingListController extends Controller
 {
     public function store(WaitingListRequest $request): RedirectResponse
     {
-        WaitingList::create($request->validated());
+        $email = $request->validated('email');
 
-        return back()->with('message', 'Thank you for joining our waiting list!');
+        WaitingList::create([
+            'name' => $request->validated('name') ?? explode('@', $email)[0],
+            'email' => $email,
+            'interest' => $request->validated('interest') ?? [],
+        ]);
+
+        return back()->with('message', "You're on the list — we'll be in touch.");
     }
 }

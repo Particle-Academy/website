@@ -1,8 +1,10 @@
 @import 'tailwindcss';
+@import './design-tokens.css';
 
-/* Force class-based dark mode — ignore OS prefers-color-scheme. The site
-   stays in light mode unless an ancestor explicitly carries `class="dark"`. */
-@custom-variant dark (&:where(.dark, .dark *));
+/* Force class-based dark mode — ignore OS prefers-color-scheme. Site uses
+   the mockup's `data-theme="light|dark"` attribute on <html>, but we also
+   keep `class="dark"` recognized so react-fancy's dark utilities work. */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -14,8 +16,9 @@
 @import '@particle-academy/react-fancy/styles.css';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
 }
 
 /* Particle Academy Custom Styles */
