@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,15 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Register admin middleware
-        $middleware->alias([
-            'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        $middleware->web(append: [
+            HandleInertiaRequests::class,
         ]);
 
-        // MCP relay endpoints accept frames from external agents that
-        // won't carry browser session cookies — exempt them from CSRF.
-        $middleware->validateCsrfTokens(except: [
-            'ui/mcp-relay/*',
+        $middleware->alias([
+            'admin' => AdminMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

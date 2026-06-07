@@ -8,12 +8,9 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
-                'resources/js/app.js',
-                // React island for /ui/demos/* interactive surfaces. Built as a
-                // separate entry so the rest of the site (Livewire + Flux Blade)
-                // doesn't pay the React bundle cost.
-                'resources/js/ui-demos.tsx',
+                'resources/js/app.tsx',
             ],
+            ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),
         react(),
