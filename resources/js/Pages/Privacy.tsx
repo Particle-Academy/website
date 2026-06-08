@@ -1,5 +1,4 @@
-import { Badge, Card, Heading, Text } from "@particle-academy/react-fancy";
-import Layout from "../Layout";
+import SiteLayout from "../Layouts/SiteLayout";
 
 export default function Privacy() {
     const lastUpdated = new Date().toLocaleDateString("en-US", {
@@ -9,83 +8,44 @@ export default function Privacy() {
     });
 
     return (
-        <Layout title="Privacy Policy">
-            <div className="min-h-screen bg-zinc-50">
-                <div className="container mx-auto px-4 py-12 max-w-3xl">
-                    <Card>
-                        <Card.Body className="p-10 space-y-6">
-                            <div className="text-center">
-                                <Badge color="violet" variant="soft" className="mb-4">
-                                    Legal
-                                </Badge>
-                                <Heading
-                                    level={1}
-                                    size="xl"
-                                    className="particle-text-gradient mb-2"
-                                >
-                                    Privacy Policy
-                                </Heading>
-                                <Text size="sm" className="text-zinc-500">
-                                    Last updated: {lastUpdated}
-                                </Text>
-                            </div>
+        <SiteLayout title="Privacy Policy">
+            <section className="page-hero">
+                <span className="eyebrow">
+                    <span className="pip" />
+                    Legal
+                </span>
+                <h1>
+                    Privacy <span className="grad">Policy</span>.
+                </h1>
+                <p>Last updated: {lastUpdated}</p>
+            </section>
 
-                            <div className="prose prose-zinc max-w-none">
-                                <Text className="text-zinc-700">
-                                    At Particle Academy, we take your privacy seriously.
-                                    This Privacy Policy explains how we collect, use, and
-                                    protect your personal information.
-                                </Text>
+            <div className="prose-card">
+                <div className="card">
+                    <p>
+                        At Particle Academy, we take your privacy seriously. This Privacy Policy
+                        explains how we collect, use, and protect your personal information.
+                    </p>
 
-                                <Heading
-                                    level={2}
-                                    size="md"
-                                    className="text-zinc-900 mt-8 mb-2"
-                                >
-                                    1. Information We Collect
-                                </Heading>
-                                <Text className="text-zinc-700">
-                                    We may collect personal information such as your name,
-                                    email address, and usage data when you interact with
-                                    our services.
-                                </Text>
+                    <h2>1. Information We Collect</h2>
+                    <p>
+                        We may collect personal information such as your name, email address, and
+                        usage data when you interact with our services.
+                    </p>
 
-                                <Heading
-                                    level={2}
-                                    size="md"
-                                    className="text-zinc-900 mt-8 mb-2"
-                                >
-                                    2. How We Use Your Information
-                                </Heading>
-                                <Text className="text-zinc-700">
-                                    We use your information to provide and improve our
-                                    services, communicate with you, and ensure the security
-                                    of our platform.
-                                </Text>
+                    <h2>2. How We Use Your Information</h2>
+                    <p>
+                        We use your information to provide and improve our services, communicate
+                        with you, and ensure the security of our platform.
+                    </p>
 
-                                <Heading
-                                    level={2}
-                                    size="md"
-                                    className="text-zinc-900 mt-8 mb-2"
-                                >
-                                    3. Contact Us
-                                </Heading>
-                                <Text className="text-zinc-700">
-                                    If you have any questions about this Privacy Policy,
-                                    please contact us at{" "}
-                                    <a
-                                        href="mailto:support@particle.academy"
-                                        className="text-violet-700 hover:underline"
-                                    >
-                                        support@particle.academy
-                                    </a>
-                                    .
-                                </Text>
-                            </div>
-                        </Card.Body>
-                    </Card>
+                    <h2>3. Contact Us</h2>
+                    <p>
+                        If you have any questions about this Privacy Policy, please contact us at{" "}
+                        <a href="mailto:support@particle.academy">support@particle.academy</a>.
+                    </p>
                 </div>
             </div>
-        </Layout>
+        </SiteLayout>
     );
 }

@@ -1,7 +1,6 @@
-import { Head, useForm, usePage } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import {
     ArrowRight,
-    ArrowUpRight,
     BookOpen,
     Briefcase,
     CheckCircle2,
@@ -9,22 +8,13 @@ import {
     Hammer,
     HeartHandshake,
     Laptop,
-    Moon,
     Rocket,
     ShieldCheck,
-    Sun,
     Swords,
     UsersRound,
 } from "lucide-react";
-import {
-    useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
-    type FormEvent,
-} from "react";
-import "../../css/home.css";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
+import SiteLayout from "../Layouts/SiteLayout";
 
 interface SharedProps {
     flash?: { message?: string };
@@ -134,47 +124,6 @@ const NET_GRADS: [string, string][] = [
     ["#fbbf24", "#f59e0b"],
     ["#fb7185", "#f43f5e"],
 ];
-
-function ThemeToggle() {
-    const [theme, setTheme] = useState<"light" | "dark">("light");
-
-    useEffect(() => {
-        const saved =
-            (typeof window !== "undefined" &&
-                (localStorage.getItem("pa-theme") as "light" | "dark" | null)) ||
-            null;
-        const initial: "light" | "dark" =
-            saved ??
-            (typeof window !== "undefined" &&
-            window.matchMedia?.("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light");
-        setTheme(initial);
-        document.documentElement.setAttribute("data-theme", initial);
-        if (initial === "dark") document.documentElement.classList.add("dark");
-        else document.documentElement.classList.remove("dark");
-    }, []);
-
-    function toggle() {
-        const next: "light" | "dark" = theme === "dark" ? "light" : "dark";
-        setTheme(next);
-        document.documentElement.setAttribute("data-theme", next);
-        if (next === "dark") document.documentElement.classList.add("dark");
-        else document.documentElement.classList.remove("dark");
-        try {
-            localStorage.setItem("pa-theme", next);
-        } catch {
-            /* ignore */
-        }
-    }
-
-    return (
-        <button type="button" className="icon-btn" onClick={toggle} aria-label="Toggle theme">
-            <Sun className="sun" />
-            <Moon className="moon" />
-        </button>
-    );
-}
 
 function useParticleField(hostRef: React.RefObject<HTMLElement | null>) {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -418,9 +367,7 @@ function useNetworkVisual() {
 }
 
 interface WaitlistFormProps {
-    id: string;
     submitLabel: string;
-    flashMessage?: string;
     submitted: boolean;
     onSubmitted: () => void;
 }
@@ -479,47 +426,15 @@ export default function Home() {
     const [submitted, setSubmitted] = useState(false);
     const handleSubmitted = useCallback(() => setSubmitted(true), []);
 
-    // If the server flashed a success (e.g. after redirect), reflect that.
     useEffect(() => {
         if (flashMessage) setSubmitted(true);
     }, [flashMessage]);
 
-    const year = useMemo(() => new Date().getFullYear(), []);
-
     return (
-        <div className="pa-home">
-            <Head>
-                <title>Particle Academy — The Community Accelerator</title>
-            </Head>
-
-            <header className="nav">
-                <div className="wrap nav-inner">
-                    <a className="brand" href="#top">
-                        <img
-                            className="mark"
-                            src="/images/particle-mark.png"
-                            alt="Particle Academy"
-                        />
-                        <span className="brand-txt">
-                            Particle&nbsp;Academy
-                            <span className="brand-sub">A Civicognita Initiative</span>
-                        </span>
-                    </a>
-                    <nav className="nav-links">
-                        <a href="#foundations">The accelerator</a>
-                        <a href="#pillars">What you'll build</a>
-                        <a href="#community">Community</a>
-                        <a href="#join">Waiting list</a>
-                    </nav>
-                    <div className="nav-right">
-                        <ThemeToggle />
-                        <a className="btn btn-primary" href="#join">
-                            Join the waiting list
-                        </a>
-                    </div>
-                </div>
-            </header>
-
+        <SiteLayout
+            title="The Community Accelerator"
+            description="Particle Academy is a community accelerator that helps individuals transform their lives through community, knowledge, and practical skills."
+        >
             <a id="top" />
 
             <section className="hero" ref={heroRef}>
@@ -543,9 +458,7 @@ export default function Home() {
                     </p>
 
                     <WaitlistForm
-                        id="wl-hero"
                         submitLabel="Join the waiting list"
-                        flashMessage={flashMessage}
                         submitted={submitted}
                         onSubmitted={handleSubmitted}
                     />
@@ -670,9 +583,7 @@ export default function Home() {
                     </p>
 
                     <WaitlistForm
-                        id="wl-join"
                         submitLabel="Reserve my spot"
-                        flashMessage={flashMessage}
                         submitted={submitted}
                         onSubmitted={handleSubmitted}
                     />
@@ -684,58 +595,6 @@ export default function Home() {
                     )}
                 </div>
             </section>
-
-            <footer className="pa-footer">
-                <div className="wrap">
-                    <div className="foot-grid">
-                        <div className="foot-brand">
-                            <a className="brand" href="#top">
-                                <img
-                                    className="mark foot"
-                                    src="/images/particle-mark.png"
-                                    alt="Particle Academy"
-                                />
-                                Particle&nbsp;Academy
-                            </a>
-                            <p>
-                                The community accelerator — transforming lives through community,
-                                knowledge, and practical skills.
-                            </p>
-                            <a
-                                className="civ"
-                                href="https://civicognita.com"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                A <strong>Civicognita</strong> Initiative
-                                <ArrowUpRight />
-                            </a>
-                        </div>
-                        <div className="foot-col">
-                            <h5>Explore</h5>
-                            <a href="#foundations">The accelerator</a>
-                            <a href="#pillars">Skills tracks</a>
-                            <a href="#community">Community</a>
-                        </div>
-                        <div className="foot-col">
-                            <h5>Join</h5>
-                            <a href="#join">Waiting list</a>
-                            <a href="#join">Founding cohort</a>
-                            <a href="#foundations">How it works</a>
-                        </div>
-                        <div className="foot-col">
-                            <h5>Connect</h5>
-                            <a href="#join">Contact</a>
-                            <a href="#join">Become a mentor</a>
-                            <a href="#join">Partner with us</a>
-                        </div>
-                    </div>
-                    <div className="foot-bottom">
-                        <span>© {year} Particle Academy</span>
-                        <span className="sp">Empowering individuals · building community</span>
-                    </div>
-                </div>
-            </footer>
-        </div>
+        </SiteLayout>
     );
 }
