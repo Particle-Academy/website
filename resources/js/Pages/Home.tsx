@@ -514,10 +514,12 @@ export default function Home() {
                 <div className="pillars">
                     {PILLARS.map((p) => (
                         <div className="pillar" key={p.title}>
-                            <div className={`ic ${p.tone}`}>
-                                <p.Icon />
+                            <div className="pillar-top">
+                                <div className={`ic ${p.tone}`}>
+                                    <p.Icon />
+                                </div>
+                                <span className="n">{p.n}</span>
                             </div>
-                            <span className="n">{p.n}</span>
                             <h4>{p.title}</h4>
                             <p>{p.body}</p>
                         </div>

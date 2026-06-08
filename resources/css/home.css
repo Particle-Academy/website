@@ -6,6 +6,9 @@
 
 .pa-home * { box-sizing: border-box; }
 .pa-home a { color: inherit; text-decoration: none; }
+
+/* Anchor jumps land below the sticky nav (64px header + 16px buffer). */
+html { scroll-padding-top: 80px; }
 .pa-home ::selection { background: var(--indigo-200); color: var(--indigo-950); }
 .pa-home .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
 
@@ -316,6 +319,12 @@
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
+.pa-home .pillar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 .pa-home .pillar .ic {
   width: 40px;
   height: 40px;
@@ -323,9 +332,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: none;
 }
 .pa-home .pillar .ic svg { width: 19px; height: 19px; }
-.pa-home .pillar .n { font-family: var(--font-mono); font-size: 11px; color: var(--fg-4); }
+.pa-home .pillar .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--fg-4);
+}
 .pa-home .pillar h4 {
   margin: 0;
   font-size: var(--text-lg);
