@@ -450,7 +450,9 @@ export default function Home() {
                         Founding cohort · join the waiting list
                     </span>
                     <h1>
-                        Become who you're capable of — <span className="grad">together.</span>
+                        Become who you're capable of —
+                        <br />
+                        <span className="grad">together.</span>
                     </h1>
                     <p className="lede">
                         Particle Academy is a community accelerator that helps individuals
@@ -497,7 +499,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="pillars" className="wrap" style={{ paddingTop: 20 }}>
+            <section id="pillars" className="wrap" style={{ paddingTop: 0 }}>
                 <div className="sec-head">
                     <span className="eyebrow">
                         <span className="pip" />
@@ -523,7 +525,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="community" className="why" style={{ padding: 0 }}>
+            <section id="community" className="why">
                 <div className="wrap">
                     <div className="why-grid">
                         <div>
@@ -569,7 +571,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="join" className="join" style={{ padding: 0 }}>
+            <section id="join" className="join">
                 <div className="jbg" />
                 <div className="wrap">
                     <span className="eyebrow">
