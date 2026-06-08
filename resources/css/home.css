@@ -596,3 +596,227 @@
   .pa-home .foot-grid { grid-template-columns: 1fr 1fr; }
   .pa-home .nav-links { display: none; }
 }
+
+/* ──────────────────────────────────────────────────────────────────────
+   Secondary-page scaffolding — shared by Coaches/Partners/Sponsors/
+   Privacy/Terms/Login when rendered inside SiteLayout. Mirrors the
+   visual rhythm of the home sections without the hero/canvas chrome.
+   ────────────────────────────────────────────────────────────────────── */
+
+.pa-home .page-hero {
+  text-align: center;
+  padding: 80px 28px 28px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.pa-home .page-hero .eyebrow { justify-content: center; }
+.pa-home .page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  font-weight: var(--weight-semibold);
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  margin: 16px 0 0;
+  text-wrap: balance;
+}
+.pa-home .page-hero h1 .grad {
+  background: linear-gradient(108deg, var(--brand-grad-from), var(--brand-grad-via) 55%, var(--brand-grad-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.pa-home .page-hero p {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-2);
+  margin: 18px auto 0;
+  max-width: 46ch;
+}
+
+.pa-home .page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 0 28px 80px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.pa-home .page-grid > * { min-width: 0; }
+
+.pa-home .prose-card {
+  max-width: 760px;
+  margin: 40px auto 96px;
+  padding: 0 28px;
+}
+.pa-home .prose-card .card {
+  background: var(--surface);
+  border: 1px solid var(--border-1);
+  border-radius: var(--radius-2xl);
+  padding: 44px 48px;
+  box-shadow: var(--shadow-sm);
+}
+.pa-home .prose-card .card h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -.01em;
+  color: var(--fg-1);
+  margin: 26px 0 8px;
+}
+.pa-home .prose-card .card h2:first-child { margin-top: 0; }
+.pa-home .prose-card .card p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-2);
+  margin: 0 0 14px;
+}
+.pa-home .prose-card .card p:last-child { margin-bottom: 0; }
+.pa-home .prose-card .card a { color: var(--blue-600); }
+.pa-home .prose-card .card a:hover { color: var(--blue-700); }
+[data-theme="dark"] .pa-home .prose-card .card a { color: var(--blue-300); }
+
+.pa-home .auth-shell {
+  max-width: 440px;
+  margin: 80px auto 96px;
+  padding: 0 28px;
+}
+.pa-home .auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border-1);
+  border-radius: var(--radius-2xl);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+}
+.pa-home .auth-card h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -.02em;
+  margin: 0 0 4px;
+  text-align: center;
+}
+.pa-home .auth-card .sub {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+  text-align: center;
+  margin: 0 0 26px;
+}
+.pa-home .auth-card .field {
+  display: block;
+  margin: 0 0 16px;
+}
+.pa-home .auth-card .field-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--fg-2);
+  margin: 0 0 6px;
+}
+.pa-home .auth-card .input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-1);
+  border-radius: var(--radius-md);
+  padding: 0 12px;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.pa-home .auth-card .input:focus-within {
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+.pa-home .auth-card .input svg { width: 16px; height: 16px; color: var(--fg-3); }
+.pa-home .auth-card .input input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--text-base);
+  color: var(--fg-1);
+  padding: 11px 0;
+  outline: none;
+  min-width: 0;
+}
+.pa-home .auth-card .input input::placeholder { color: var(--fg-4); }
+.pa-home .auth-card .check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-sm);
+  color: var(--fg-2);
+  margin: 18px 0 22px;
+  cursor: pointer;
+}
+.pa-home .auth-card .err {
+  font-size: var(--text-xs);
+  color: var(--red-600);
+  margin: 6px 0 0;
+}
+[data-theme="dark"] .pa-home .auth-card .err { color: var(--red-300); }
+
+.pa-home .coach-card,
+.pa-home .benefit-card {
+  border: 1px solid var(--border-1);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+  align-items: center;
+  transition: border-color var(--dur-base), box-shadow var(--dur-base), transform var(--dur-base);
+}
+.pa-home .coach-card:hover,
+.pa-home .benefit-card:hover {
+  border-color: var(--border-2);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.pa-home .coach-card .avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-grad-from), var(--brand-grad-via), var(--brand-grad-to));
+  color: #fff;
+  font-weight: var(--weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-lg);
+}
+.pa-home .coach-card h3,
+.pa-home .benefit-card h3 {
+  margin: 4px 0 0;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -.01em;
+  color: var(--fg-1);
+}
+.pa-home .coach-card .specialty {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+  margin: -2px 0 0;
+}
+.pa-home .coach-card p,
+.pa-home .benefit-card p {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+.pa-home .benefit-card .ic {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pa-home .benefit-card .ic svg { width: 22px; height: 22px; }
+
+@media (max-width: 880px) {
+  .pa-home .page-grid { grid-template-columns: 1fr; }
+}

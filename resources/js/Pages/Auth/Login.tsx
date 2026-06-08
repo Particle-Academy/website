@@ -1,17 +1,7 @@
 import { useForm } from "@inertiajs/react";
-import {
-    Action,
-    Badge,
-    Card,
-    Field,
-    Heading,
-    Input,
-    Switch,
-    Text,
-} from "@particle-academy/react-fancy";
-import { Lock, Mail } from "lucide-react";
+import { ArrowRight, Lock, Mail } from "lucide-react";
 import type { FormEvent } from "react";
-import GuestLayout from "../../Layouts/GuestLayout";
+import SiteLayout from "../../Layouts/SiteLayout";
 
 export default function Login() {
     const form = useForm({
@@ -28,78 +18,76 @@ export default function Login() {
     }
 
     return (
-        <GuestLayout title="Admin Login">
-            <Card>
-                <Card.Header className="px-8 pt-8 pb-4 text-center">
-                    <Badge color="violet" variant="soft" className="mb-3">
-                        Admin
-                    </Badge>
-                    <Heading
-                        level={1}
-                        size="lg"
-                        className="particle-text-gradient"
-                    >
-                        Sign in
-                    </Heading>
-                    <Text size="sm" className="text-zinc-500 mt-2">
-                        Authorized administrators only.
-                    </Text>
-                </Card.Header>
+        <SiteLayout title="Admin Login">
+            <div className="auth-shell">
+                <div className="auth-card">
+                    <h1>Sign in</h1>
+                    <p className="sub">Authorized administrators only.</p>
 
-                <Card.Body className="px-8 pb-8">
-                    <form onSubmit={submit} className="space-y-5">
-                        <Field label="Email" error={form.errors.email}>
-                            <Input
-                                type="email"
-                                value={form.data.email}
-                                onChange={(e) =>
-                                    form.setData("email", e.target.value)
-                                }
-                                prefix={<Mail className="w-4 h-4" />}
-                                required
-                                autoFocus
-                                autoComplete="username"
-                                placeholder="admin@particle.academy"
-                            />
-                        </Field>
-
-                        <Field label="Password" error={form.errors.password}>
-                            <Input
-                                type="password"
-                                value={form.data.password}
-                                onChange={(e) =>
-                                    form.setData("password", e.target.value)
-                                }
-                                prefix={<Lock className="w-4 h-4" />}
-                                required
-                                autoComplete="current-password"
-                            />
-                        </Field>
-
-                        <div className="flex items-center gap-3">
-                            <Switch
-                                checked={form.data.remember}
-                                onChange={(e) =>
-                                    form.setData("remember", e.target.checked)
-                                }
-                            />
-                            <Text size="sm" className="text-zinc-700">
-                                Remember me
-                            </Text>
+                    <form onSubmit={submit}>
+                        <div className="field">
+                            <label className="field-label" htmlFor="email">
+                                Email
+                            </label>
+                            <div className="input">
+                                <Mail />
+                                <input
+                                    id="email"
+                                    type="email"
+                                    value={form.data.email}
+                                    onChange={(e) => form.setData("email", e.target.value)}
+                                    required
+                                    autoFocus
+                                    autoComplete="username"
+                                    placeholder="admin@particle.academy"
+                                />
+                            </div>
+                            {form.errors.email && (
+                                <p className="err">{form.errors.email}</p>
+                            )}
                         </div>
 
-                        <Action
+                        <div className="field">
+                            <label className="field-label" htmlFor="password">
+                                Password
+                            </label>
+                            <div className="input">
+                                <Lock />
+                                <input
+                                    id="password"
+                                    type="password"
+                                    value={form.data.password}
+                                    onChange={(e) => form.setData("password", e.target.value)}
+                                    required
+                                    autoComplete="current-password"
+                                />
+                            </div>
+                            {form.errors.password && (
+                                <p className="err">{form.errors.password}</p>
+                            )}
+                        </div>
+
+                        <label className="check">
+                            <input
+                                type="checkbox"
+                                checked={form.data.remember}
+                                onChange={(e) => form.setData("remember", e.target.checked)}
+                            />
+                            Remember me
+                        </label>
+
+                        <button
                             type="submit"
-                            color="violet"
-                            size="md"
-                            className="w-full"
-                            loading={form.processing}
+                            className="btn btn-primary btn-lg"
+                            style={{ width: "100%" }}
+                            disabled={form.processing}
                         >
                             Log in
-                        </Action>
+                            <ArrowRight />
+                        </button>
                     </form>
-                </Card.Body>
-            </Card>
-        </GuestLayout>
+                </div>
+            </div>
+        </SiteLayout>
     );
 }
