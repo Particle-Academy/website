@@ -163,12 +163,11 @@
 .pa-home .hero h1 {
   font-family: var(--font-display);
   font-weight: var(--weight-semibold);
-  font-size: clamp(2.7rem, 5.4vw, 4.3rem);
-  line-height: 1.02;
+  font-size: clamp(2.2rem, 5vw, 4.3rem);
+  line-height: 1.05;
   letter-spacing: -.035em;
   margin: 24px 0 0;
-  max-width: 16ch;
-  text-wrap: balance;
+  max-width: none;
 }
 .pa-home .hero h1 .grad {
   background: linear-gradient(108deg, var(--brand-grad-from), var(--brand-grad-via) 55%, var(--brand-grad-to));
