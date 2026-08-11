@@ -5,8 +5,18 @@ import { FancyAppRoot } from "@particle-academy/fancy-inertia";
 import { FancyDataRoot } from "@particle-academy/fancy-query";
 import ReactDOMServer from "react-dom/server";
 
-createServer((page) =>
-    createInertiaApp({
+/**
+ * Inertia defaults every project to port 13714, so several Laravel apps on one
+ * machine silently fight over it — the first to bind wins and the rest either
+ * fail to start or, worse, get render requests answered by a DIFFERENT app's
+ * SSR server. This app therefore takes its own port; keep INERTIA_SSR_URL in
+ * `.env` pointed at the same one.
+ */
+const ssrPort = Number(process.env.INERTIA_SSR_PORT ?? 13715);
+
+createServer(
+    (page) =>
+        createInertiaApp({
         page,
         render: ReactDOMServer.renderToString,
         resolve: (name) => {
@@ -24,5 +34,6 @@ createServer((page) =>
                 </FancyDataRoot>
             </FancyAppRoot>
         ),
-    })
+    }),
+    { port: ssrPort },
 );
