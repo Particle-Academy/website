@@ -226,7 +226,7 @@ export default function Partners({ partners }: PartnersProps) {
                     <div className="flex items-center gap-2">
                         <Switch
                             checked={form.data.is_published}
-                            onChange={(e) => form.setData("is_published", e.target.checked)}
+                            onCheckedChange={(checked) => form.setData("is_published", checked)}
                         />
                         <Text size="sm" className="text-zinc-700">Published</Text>
                     </div>

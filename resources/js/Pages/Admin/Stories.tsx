@@ -228,24 +228,22 @@ export default function Stories({ stories }: StoriesProps) {
                         <Field label="Rating">
                             <Select
                                 value={String(form.data.rating)}
-                                onChange={(e) =>
-                                    form.setData("rating", parseInt(e.target.value, 10))
+                                list={[1, 2, 3, 4, 5].map((n) => ({
+                                    value: String(n),
+                                    label: `${n} Star${n === 1 ? "" : "s"}`,
+                                }))}
+                                onValueChange={(value) =>
+                                    form.setData("rating", parseInt(value, 10))
                                 }
-                            >
-                                {[1, 2, 3, 4, 5].map((n) => (
-                                    <option key={n} value={n}>
-                                        {n} Star{n === 1 ? "" : "s"}
-                                    </option>
-                                ))}
-                            </Select>
+                            />
                         </Field>
                     </div>
                     <div className="flex gap-6">
                         <div className="flex items-center gap-2">
                             <Switch
                                 checked={form.data.is_featured}
-                                onChange={(e) =>
-                                    form.setData("is_featured", e.target.checked)
+                                onCheckedChange={(checked) =>
+                                    form.setData("is_featured", checked)
                                 }
                             />
                             <Text size="sm" className="text-zinc-700">Featured</Text>
@@ -253,8 +251,8 @@ export default function Stories({ stories }: StoriesProps) {
                         <div className="flex items-center gap-2">
                             <Switch
                                 checked={form.data.is_published}
-                                onChange={(e) =>
-                                    form.setData("is_published", e.target.checked)
+                                onCheckedChange={(checked) =>
+                                    form.setData("is_published", checked)
                                 }
                             />
                             <Text size="sm" className="text-zinc-700">Published</Text>

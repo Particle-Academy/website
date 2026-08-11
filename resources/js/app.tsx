@@ -1,4 +1,5 @@
 import { createInertiaApp } from "@inertiajs/react";
+import type { ComponentType } from "react";
 import { createRoot } from "react-dom/client";
 import { FancyAppRoot } from "@particle-academy/fancy-inertia";
 import { FancyDataRoot } from "@particle-academy/fancy-query";
@@ -10,7 +11,9 @@ createInertiaApp({
         if (!page) {
             throw new Error(`Inertia page not found: ./Pages/${name}.tsx`);
         }
-        return (page as () => Promise<{ default: unknown }>)();
+        return (page as () => Promise<{ default: ComponentType<any> }>)().then(
+            (module) => module.default,
+        );
     },
     setup({ el, App, props }) {
         createRoot(el).render(

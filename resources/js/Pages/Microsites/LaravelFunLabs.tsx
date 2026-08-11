@@ -29,7 +29,7 @@ function Feature({ icon, bg, color, title, body }: FeatureProps) {
                 <div className={`w-12 h-12 ${bg} ${color} rounded-xl flex items-center justify-center mb-5`}>
                     {icon}
                 </div>
-                <Heading level={3} size="md" className="text-slate-900 mb-2">
+                <Heading as="h3" size="md" className="text-slate-900 mb-2">
                     {title}
                 </Heading>
                 <Text size="sm" className="text-slate-600 leading-relaxed">
@@ -75,7 +75,7 @@ export default function LaravelFunLabs() {
                             <Badge color="violet" variant="soft" className="mb-6">
                                 <Trophy className="w-3.5 h-3.5 mr-1 inline" /> Gamification for Laravel
                             </Badge>
-                            <Heading level={1} size="xl" className="text-slate-900 mb-6 leading-tight">
+                            <Heading as="h1" size="xl" className="text-slate-900 mb-6 leading-tight">
                                 Laravel <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-rose-600">Fun Lab</span>
                             </Heading>
                             <Text size="lg" className="max-w-2xl mx-auto text-slate-600 mb-10">
@@ -91,7 +91,7 @@ export default function LaravelFunLabs() {
                     <section id="features" className="space-y-8">
                         <div className="text-center">
                             <Badge color="violet" variant="soft" className="mb-4">Features</Badge>
-                            <Heading level={2} size="lg" className="text-slate-900 mb-2">Engage users. Capture data.</Heading>
+                            <Heading as="h2" size="lg" className="text-slate-900 mb-2">Engage users. Capture data.</Heading>
                             <Text className="text-slate-600 max-w-2xl mx-auto">
                                 Developers get engagement data for free; users feel recognized and motivated.
                             </Text>
@@ -107,7 +107,7 @@ export default function LaravelFunLabs() {
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div>
                                 <Badge color="violet" variant="soft" className="mb-4">API</Badge>
-                                <Heading level={2} size="lg" className="text-white mb-4">Simple, fluent API.</Heading>
+                                <Heading as="h2" size="lg" className="text-white mb-4">Simple, fluent API.</Heading>
                                 <Text className="text-slate-300 mb-6">
                                     Designed to be readable and expressive. Awarding points or unlocking achievements takes just a few lines of code.
                                 </Text>
@@ -142,7 +142,7 @@ export default function LaravelFunLabs() {
                         <div className="w-14 h-14 mx-auto rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center mb-4">
                             <Terminal className="w-6 h-6" />
                         </div>
-                        <Heading level={2} size="lg" className="text-slate-900 mb-2">Ready to gamify your app?</Heading>
+                        <Heading as="h2" size="lg" className="text-slate-900 mb-2">Ready to gamify your app?</Heading>
                         <Text className="text-slate-600 mb-6">
                             Install via Composer and start tracking engagement in minutes.
                         </Text>
