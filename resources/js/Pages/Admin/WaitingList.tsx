@@ -233,7 +233,7 @@ export default function WaitingList({ waitingLists }: WaitingListProps) {
                     <div className="flex items-center gap-3">
                         <Switch
                             checked={form.data.contacted}
-                            onChange={(e) => form.setData("contacted", e.target.checked)}
+                            onCheckedChange={(checked) => form.setData("contacted", checked)}
                         />
                         <Text size="sm" className="text-zinc-700">
                             Contacted

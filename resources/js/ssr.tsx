@@ -1,5 +1,6 @@
 import { createInertiaApp } from "@inertiajs/react";
 import createServer from "@inertiajs/react/server";
+import type { ComponentType } from "react";
 import { FancyAppRoot } from "@particle-academy/fancy-inertia";
 import { FancyDataRoot } from "@particle-academy/fancy-query";
 import ReactDOMServer from "react-dom/server";
@@ -14,7 +15,7 @@ createServer((page) =>
             if (!page) {
                 throw new Error(`Inertia page not found: ./Pages/${name}.tsx`);
             }
-            return page as { default: unknown };
+            return page as { default: ComponentType<any> };
         },
         setup: ({ App, props }) => (
             <FancyAppRoot withScreens={false} withECharts={false}>

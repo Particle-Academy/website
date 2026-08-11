@@ -50,7 +50,7 @@ function Feature({ icon, title, body }: FeatureProps) {
                 <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-5">
                     {icon}
                 </div>
-                <Heading level={3} size="md" className="text-stone-900 mb-2">
+                <Heading as="h3" size="md" className="text-stone-900 mb-2">
                     {title}
                 </Heading>
                 <Text size="sm" className="text-stone-600 leading-relaxed">
@@ -74,7 +74,7 @@ function UseCase({ icon, title, body }: UseCaseProps) {
                 <div className="w-10 h-10 mx-auto rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-3">
                     {icon}
                 </div>
-                <Heading level={4} size="sm" className="text-stone-900 mb-1">
+                <Heading as="h4" size="sm" className="text-stone-900 mb-1">
                     {title}
                 </Heading>
                 <Text size="sm" className="text-stone-600">
@@ -117,7 +117,7 @@ export default function TribeTrip() {
                         <Badge color="green" variant="soft" className="mb-4">
                             Community Resource Sharing
                         </Badge>
-                        <Heading level={1} size="xl" className="text-stone-900 leading-tight mb-6">
+                        <Heading as="h1" size="xl" className="text-stone-900 leading-tight mb-6">
                             Share smarter. <span className="text-teal-600">Live better.</span>
                         </Heading>
                         <Text size="lg" className="max-w-2xl mx-auto text-stone-600 mb-10">
@@ -136,7 +136,7 @@ export default function TribeTrip() {
                             <Pain text="Unfair cost splitting" />
                         </div>
                         <div>
-                            <Heading level={2} size="lg" className="text-stone-900 mb-4">
+                            <Heading as="h2" size="lg" className="text-stone-900 mb-4">
                                 Stop managing resources with clipboards and text chains.
                             </Heading>
                             <Text className="text-stone-600 mb-6">
@@ -156,7 +156,7 @@ export default function TribeTrip() {
                     <section id="features" className="space-y-8">
                         <div className="text-center">
                             <Badge color="green" variant="soft" className="mb-4">Features</Badge>
-                            <Heading level={2} size="lg" className="text-stone-900 mb-2">
+                            <Heading as="h2" size="lg" className="text-stone-900 mb-2">
                                 Everything you need to share.
                             </Heading>
                             <Text className="text-stone-600 max-w-2xl mx-auto">
@@ -172,7 +172,7 @@ export default function TribeTrip() {
 
                     <section className="space-y-6">
                         <div className="text-center">
-                            <Heading level={2} size="lg" className="text-stone-900">Perfect for…</Heading>
+                            <Heading as="h2" size="lg" className="text-stone-900">Perfect for…</Heading>
                         </div>
                         <div className="grid md:grid-cols-4 gap-4">
                             <UseCase icon={<Home className="w-5 h-5" />} title="HOAs" body="Share tools, clubhouses, and maintenance equipment." />
@@ -183,7 +183,7 @@ export default function TribeTrip() {
                     </section>
 
                     <section id="contact" className="rounded-3xl overflow-hidden bg-gradient-to-br from-stone-900 to-teal-900 text-white p-12 text-center">
-                        <Heading level={2} size="xl" className="text-white mb-4">Ready to organize your community?</Heading>
+                        <Heading as="h2" size="xl" className="text-white mb-4">Ready to organize your community?</Heading>
                         <Text size="lg" className="text-stone-300 mb-8 max-w-2xl mx-auto">
                             Tribe Trip is open source and available for self-hosting. A hosted version is in the works.
                         </Text>

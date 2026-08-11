@@ -39,7 +39,7 @@ function StatCard({ href, label, value, Icon, accentBg, accentText, badge }: Sta
                             {badge}
                         </Badge>
                     </div>
-                    <Heading level={3} size="xl" className="text-zinc-900 mb-1">
+                    <Heading as="h3" size="xl" className="text-zinc-900 mb-1">
                         {value}
                     </Heading>
                     <Text size="sm" className="text-zinc-500">

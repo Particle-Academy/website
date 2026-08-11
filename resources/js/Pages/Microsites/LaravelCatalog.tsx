@@ -29,7 +29,7 @@ function Feature({ icon, title, body }: FeatureProps) {
                 <div className="w-12 h-12 rounded-xl bg-red-100 text-red-700 flex items-center justify-center mb-5">
                     {icon}
                 </div>
-                <Heading level={3} size="md" className="text-gray-900 mb-2">
+                <Heading as="h3" size="md" className="text-gray-900 mb-2">
                     {title}
                 </Heading>
                 <Text size="sm" className="text-gray-600 leading-relaxed">
@@ -71,7 +71,7 @@ export default function LaravelCatalog() {
                             <Badge color="red" variant="soft" className="mb-6 !bg-red-700/40 !text-white !border-red-400/50">
                                 <ShoppingBag className="w-3.5 h-3.5 mr-1 inline" /> Commerce for Laravel
                             </Badge>
-                            <Heading level={1} size="xl" className="text-white mb-4">Laravel Catalog</Heading>
+                            <Heading as="h1" size="xl" className="text-white mb-4">Laravel Catalog</Heading>
                             <Text size="lg" className="text-red-100 max-w-2xl mx-auto mb-10">
                                 Product and subscription management catalog with Stripe integration.
                             </Text>
@@ -90,7 +90,7 @@ export default function LaravelCatalog() {
                         <section id="features" className="space-y-8">
                             <div className="text-center">
                                 <Badge color="red" variant="soft" className="mb-4">Features</Badge>
-                                <Heading level={2} size="lg" className="text-gray-900 mb-2">
+                                <Heading as="h2" size="lg" className="text-gray-900 mb-2">
                                     Manage your Stripe catalog with ease.
                                 </Heading>
                                 <Text className="text-gray-600 max-w-2xl mx-auto">
@@ -109,7 +109,7 @@ export default function LaravelCatalog() {
                             <div className="grid md:grid-cols-2 gap-12 items-center">
                                 <div>
                                     <Badge color="blue" variant="soft" className="mb-4">Powerful Integration</Badge>
-                                    <Heading level={2} size="lg" className="text-white mb-4">Works with Laravel FMS.</Heading>
+                                    <Heading as="h2" size="lg" className="text-white mb-4">Works with Laravel FMS.</Heading>
                                     <Text className="text-gray-300 mb-6">
                                         Combine Catalog with our{" "}
                                         <a href="https://github.com/Particle-Academy/laravel-feature-management-system" className="text-blue-400 hover:underline">Feature Management System</a>{" "}
@@ -151,7 +151,7 @@ export default function LaravelCatalog() {
                         </section>
 
                         <section id="install" className="text-center max-w-3xl mx-auto">
-                            <Heading level={2} size="lg" className="text-gray-900 mb-6">Ready to build your SaaS?</Heading>
+                            <Heading as="h2" size="lg" className="text-gray-900 mb-6">Ready to build your SaaS?</Heading>
                             <Card>
                                 <Card.Body className="p-4 flex items-center justify-between gap-4">
                                     <code className="font-mono text-sm text-red-700">composer require particle-academy/laravel-catalog</code>
