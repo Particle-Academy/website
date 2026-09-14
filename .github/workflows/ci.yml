@@ -1,0 +1,98 @@
+name: CI
+
+# This site had no CI at all, so nothing enforced the third-party allowlist here
+# and nothing ran its type-check, its two bundles or its Pest suite on push. The
+# org gate audit (Particle-Academy/.github, third-party/gate-audit.mjs) flagged
+# it as "no workflows at all".
+#
+# Two jobs rather than one, on purpose. In the single-job packages the allowlist
+# is the first step, so a red gate stops everything after it. Here that would
+# mean a dependency awaiting an approval decision silently switches off the
+# type-check, the build and the tests for as long as the decision takes. The
+# gate still fails the run -- it just does not blind the rest of it.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  allowlist:
+    name: Third-party allowlist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The allowlist is FETCHED, never vendored: one source, no copies to drift.
+      # composer.json here is named `laravel/laravel`, which every Laravel app
+      # shares, so a grant for this site must be keyed on the remote name
+      # (`website`), never the manifest name.
+      - name: Fetch the third-party allowlist
+        uses: actions/checkout@v4
+        with:
+          repository: Particle-Academy/.github
+          path: .third-party-allowlist
+          persist-credentials: false
+
+      - name: Third-party dependency allowlist
+        run: |
+          node .third-party-allowlist/third-party/check.mjs --repo .
+          # Delete it. A fetched checkout left lying in the workspace is not
+          # inert: vitest globbed the checker's own tests out of it and failed
+          # a package whose code was fine. Removed with node, not rm -rf,
+          # because some of these matrices run on windows-latest where a
+          # multi-line run: block is PowerShell and rm -rf is not a command.
+          node -e "require('node:fs').rmSync('.third-party-allowlist',{recursive:true,force:true})"
+
+  app:
+    name: Type-check, build + tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # PHP dependencies come first, before the build: resources/css/app.css
+      # points a Tailwind `@source` at the pagination views under vendor/, and
+      # a missing directory there is not an error -- the build just silently
+      # emits less CSS than the deploy does.
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          coverage: none
+          extensions: mbstring, sqlite3, pdo_sqlite
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # `npm ci` rather than `install`: the lockfile is what a deploy resolves,
+      # so it is what CI should verify.
+      - name: Install JS dependencies
+        run: npm ci --no-audit --no-fund
+
+      # There is no `typecheck` script; tsconfig.json is `noEmit` and covers
+      # both entries (resources/js/app.tsx and the SSR entry ssr.tsx).
+      - name: Type-check
+        run: npx tsc --noEmit -p tsconfig.json
+
+      # Both bundles. The SSR build fails on browser-only imports that the
+      # client build accepts. It also writes public/build/manifest.json, which
+      # the feature tests below need: every Inertia page renders a Blade view
+      # calling `@vite`, and that throws without a manifest.
+      - name: Build
+        run: npm run build
+
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      # In-memory sqlite (see phpunit.xml), so there is no database service.
+      - name: Tests
+        run: php artisan test --compact
