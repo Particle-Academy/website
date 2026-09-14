@@ -14,7 +14,7 @@ Digital today, Particle Academy is working toward a physical **entrepreneurship 
 
 ## Tech stack
 
-- **Laravel 12** (PHP 8.4) with **Inertia.js** and Ziggy
+- **Laravel 13** (PHP 8.4) with **Inertia.js**
 - **React 19 + TypeScript**, bundled with **Vite**
 - **Tailwind CSS v4**
 - Built on the **Fancy UI** kit — Fancy Core (`@particle-academy/react-fancy`, `@particle-academy/fancy-inertia`, `@particle-academy/fancy-query`) with **TanStack Query**

@@ -33,7 +33,6 @@
 
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
-    @routes
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])
     @inertiaHead
