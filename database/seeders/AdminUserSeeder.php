@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUserSeeder extends Seeder
 {
@@ -13,10 +14,10 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         // Create an admin user
-        \App\Models\User::factory()->create([
+        User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@particle.academy',
-            'password' => \Illuminate\Support\Facades\Hash::make('REDACTED-ROTATED'),
+            'password' => Hash::make('REDACTED-ROTATED'),
             'is_admin' => true,
         ]);
     }
