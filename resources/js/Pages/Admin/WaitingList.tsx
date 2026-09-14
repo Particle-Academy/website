@@ -1,7 +1,7 @@
 import { router, useForm } from "@inertiajs/react";
 import {
-    Action,
     Badge,
+    Button,
     Card,
     Field,
     Heading,
@@ -203,7 +203,7 @@ export default function WaitingList({ waitingLists }: WaitingListProps) {
                             {INTEREST_OPTIONS.map((option) => {
                                 const active = form.data.interest.includes(option);
                                 return (
-                                    <Action
+                                    <Button
                                         key={option}
                                         type="button"
                                         size="sm"
@@ -225,7 +225,7 @@ export default function WaitingList({ waitingLists }: WaitingListProps) {
                                         }}
                                     >
                                         {option}
-                                    </Action>
+                                    </Button>
                                 );
                             })}
                         </div>
@@ -247,16 +247,16 @@ export default function WaitingList({ waitingLists }: WaitingListProps) {
                         />
                     </Field>
                     <div className="flex justify-end gap-2 pt-2">
-                        <Action type="button" color="zinc" variant="ghost" onClick={cancelEdit}>
+                        <Button type="button" color="zinc" variant="ghost" onClick={cancelEdit}>
                             Cancel
-                        </Action>
-                        <Action
+                        </Button>
+                        <Button
                             type="submit"
                             color="violet"
                             loading={form.processing}
                         >
                             Save
-                        </Action>
+                        </Button>
                     </div>
                 </form>
             </Modal>
@@ -270,17 +270,17 @@ export default function WaitingList({ waitingLists }: WaitingListProps) {
                     Are you sure you want to delete this entry? This action cannot be undone.
                 </Text>
                 <div className="flex justify-end gap-2">
-                    <Action
+                    <Button
                         type="button"
                         color="zinc"
                         variant="ghost"
                         onClick={() => setDeletingId(null)}
                     >
                         Cancel
-                    </Action>
-                    <Action type="button" color="red" onClick={confirmDelete}>
+                    </Button>
+                    <Button type="button" color="red" onClick={confirmDelete}>
                         Delete
-                    </Action>
+                    </Button>
                 </div>
             </Modal>
         </AdminLayout>

@@ -39,7 +39,7 @@ Particle Academy marketing site — Laravel + Inertia + React + Tailwind v4. Mul
 Stack: Laravel + Inertia 3 + React 19 + Tailwind v4 + Pest 4 + PHP 8.4. Highlights that bite quickly:
 
 - **No Livewire / Flux** — both are uninstalled. Don't reintroduce. Page-level interactivity is React + Inertia; styling is Tailwind + the custom `particle-*` utilities in `resources/css/app.css`.
-- **React-fancy components** — bundled via `@particle-academy/react-fancy` (Tailwind v4 `@source` directive in `app.css` scans the dist). `Action` is a deprecated alias of `Button`; prefer `Button` in new code.
+- **React-fancy components** — bundled via `@particle-academy/react-fancy` (Tailwind v4 `@source` directive in `app.css` scans the dist). `Action` is a retired alias of `Button` (and `ActionColor` / `ActionProps` of `ButtonColor` / `ButtonProps`): always use the `Button` names. `tests/Feature/RetiredReactFancyAliasesTest.php` fails if one comes back.
 - **Inertia testing** — use `assertInertia(fn ($page) => $page->component('Foo')->where('prop', ...))`. Bare `assertSee('Text')` will fail unless SSR is on, because page content lives in the `data-page` JSON, not the initial HTML.
 - **Tailwind v4** is CSS-first via `@theme` (no `tailwind.config.js`); use `@import "tailwindcss"` not `@tailwind` directives; prefer `bg-black/50` over deprecated `bg-opacity-*`; use `gap-*` not margins for list spacing.
 - **PHP 8.4**: explicit return types on all methods; constructor property promotion; PHPDoc over inline comments; never `env()` outside config files (use `config(...)`); prefer `Model::query()` over `DB::`; eager load to avoid N+1.

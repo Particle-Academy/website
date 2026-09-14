@@ -1,7 +1,7 @@
 import { router, useForm } from "@inertiajs/react";
 import {
-    Action,
     Badge,
+    Button,
     Card,
     Field,
     Input,
@@ -91,9 +91,9 @@ export default function Partners({ partners }: PartnersProps) {
     return (
         <AdminLayout heading="Partners">
             <div className="flex justify-end mb-4">
-                <Action type="button" color="violet" onClick={startCreate}>
+                <Button type="button" color="violet" onClick={startCreate}>
                     <Plus className="w-4 h-4 mr-1 inline" /> New Partner
-                </Action>
+                </Button>
             </div>
 
             <Card>
@@ -231,12 +231,12 @@ export default function Partners({ partners }: PartnersProps) {
                         <Text size="sm" className="text-zinc-700">Published</Text>
                     </div>
                     <div className="flex justify-end gap-2 pt-2">
-                        <Action type="button" color="zinc" variant="ghost" onClick={close}>
+                        <Button type="button" color="zinc" variant="ghost" onClick={close}>
                             Cancel
-                        </Action>
-                        <Action type="submit" color="violet" loading={form.processing}>
+                        </Button>
+                        <Button type="submit" color="violet" loading={form.processing}>
                             Save
-                        </Action>
+                        </Button>
                     </div>
                 </form>
             </Modal>
@@ -250,12 +250,12 @@ export default function Partners({ partners }: PartnersProps) {
                     Are you sure you want to delete this partner? This action cannot be undone.
                 </Text>
                 <div className="flex justify-end gap-2">
-                    <Action type="button" color="zinc" variant="ghost" onClick={() => setDeletingId(null)}>
+                    <Button type="button" color="zinc" variant="ghost" onClick={() => setDeletingId(null)}>
                         Cancel
-                    </Action>
-                    <Action type="button" color="red" onClick={confirmDelete}>
+                    </Button>
+                    <Button type="button" color="red" onClick={confirmDelete}>
                         Delete
-                    </Action>
+                    </Button>
                 </div>
             </Modal>
         </AdminLayout>

@@ -1,5 +1,5 @@
 import { Head, usePage } from "@inertiajs/react";
-import { Action, Badge, Card, Heading, Text } from "@particle-academy/react-fancy";
+import { Badge, Button, Card, Heading, Text } from "@particle-academy/react-fancy";
 import {
     Building,
     Calendar,
@@ -108,7 +108,7 @@ export default function TribeTrip() {
                             <a href="#features" className="text-stone-600 hover:text-amber-700 px-3 py-2 rounded-lg hover:bg-stone-50 transition-colors text-sm">Features</a>
                             <a href="#contact" className="text-stone-600 hover:text-amber-700 px-3 py-2 rounded-lg hover:bg-stone-50 transition-colors text-sm">Contact</a>
                         </nav>
-                        <Action color="amber" size="sm" href="https://github.com/Particle-Academy/tribe-trip">Get Started</Action>
+                        <Button color="amber" size="sm" href="https://github.com/Particle-Academy/tribe-trip">Get Started</Button>
                     </div>
                 </header>
 
@@ -124,8 +124,8 @@ export default function TribeTrip() {
                             The easy way for small communities to share vehicles, equipment, and spaces — with transparent tracking and fair billing.
                         </Text>
                         <div className="flex flex-col sm:flex-row justify-center gap-3">
-                            <Action href="https://github.com/Particle-Academy/tribe-trip" color="amber" size="lg">Get Started</Action>
-                            <Action color="zinc" variant="ghost" size="lg" disabled>Live Demo</Action>
+                            <Button href="https://github.com/Particle-Academy/tribe-trip" color="amber" size="lg">Get Started</Button>
+                            <Button color="zinc" variant="ghost" size="lg" disabled>Live Demo</Button>
                         </div>
                     </section>
 
@@ -188,12 +188,12 @@ export default function TribeTrip() {
                             Tribe Trip is open source and available for self-hosting. A hosted version is in the works.
                         </Text>
                         <div className="flex flex-col sm:flex-row justify-center gap-3">
-                            <Action href="https://github.com/Particle-Academy/tribe-trip" color="zinc" size="lg" className="!bg-white !text-stone-900">
+                            <Button href="https://github.com/Particle-Academy/tribe-trip" color="zinc" size="lg" className="!bg-white !text-stone-900">
                                 <Code className="w-4 h-4 mr-2 inline" /> View on GitHub
-                            </Action>
-                            <Action color="zinc" variant="ghost" size="lg" className="!text-white">
+                            </Button>
+                            <Button color="zinc" variant="ghost" size="lg" className="!text-white">
                                 Join Hosted Waitlist
-                            </Action>
+                            </Button>
                         </div>
                     </section>
                 </main>

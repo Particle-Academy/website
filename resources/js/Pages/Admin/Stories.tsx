@@ -1,7 +1,7 @@
 import { router, useForm } from "@inertiajs/react";
 import {
-    Action,
     Badge,
+    Button,
     Card,
     Field,
     Input,
@@ -98,9 +98,9 @@ export default function Stories({ stories }: StoriesProps) {
     return (
         <AdminLayout heading="Success Stories">
             <div className="flex justify-end mb-4">
-                <Action type="button" color="violet" onClick={startCreate}>
+                <Button type="button" color="violet" onClick={startCreate}>
                     <Plus className="w-4 h-4 mr-1 inline" /> New Story
-                </Action>
+                </Button>
             </div>
 
             <Card>
@@ -259,12 +259,12 @@ export default function Stories({ stories }: StoriesProps) {
                         </div>
                     </div>
                     <div className="flex justify-end gap-2 pt-2">
-                        <Action type="button" color="zinc" variant="ghost" onClick={close}>
+                        <Button type="button" color="zinc" variant="ghost" onClick={close}>
                             Cancel
-                        </Action>
-                        <Action type="submit" color="violet" loading={form.processing}>
+                        </Button>
+                        <Button type="submit" color="violet" loading={form.processing}>
                             Save
-                        </Action>
+                        </Button>
                     </div>
                 </form>
             </Modal>
@@ -278,12 +278,12 @@ export default function Stories({ stories }: StoriesProps) {
                     Are you sure you want to delete this story? This action cannot be undone.
                 </Text>
                 <div className="flex justify-end gap-2">
-                    <Action type="button" color="zinc" variant="ghost" onClick={() => setDeletingId(null)}>
+                    <Button type="button" color="zinc" variant="ghost" onClick={() => setDeletingId(null)}>
                         Cancel
-                    </Action>
-                    <Action type="button" color="red" onClick={confirmDelete}>
+                    </Button>
+                    <Button type="button" color="red" onClick={confirmDelete}>
                         Delete
-                    </Action>
+                    </Button>
                 </div>
             </Modal>
         </AdminLayout>

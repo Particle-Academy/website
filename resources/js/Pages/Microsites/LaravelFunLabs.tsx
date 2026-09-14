@@ -1,5 +1,5 @@
 import { Head, usePage } from "@inertiajs/react";
-import { Action, Badge, Card, Heading, Text } from "@particle-academy/react-fancy";
+import { Badge, Button, Card, Heading, Text } from "@particle-academy/react-fancy";
 import {
     BarChart3,
     Check,
@@ -62,7 +62,7 @@ export default function LaravelFunLabs() {
                             <a href="#install" className="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Installation</a>
                             <a href="https://github.com/Particle-Academy/laravel-fun-labs" className="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">GitHub</a>
                         </nav>
-                        <Action color="indigo" size="sm" href="https://github.com/Particle-Academy/laravel-fun-labs">Get Started</Action>
+                        <Button color="indigo" size="sm" href="https://github.com/Particle-Academy/laravel-fun-labs">Get Started</Button>
                     </div>
                 </header>
 
@@ -82,8 +82,8 @@ export default function LaravelFunLabs() {
                                 Analytics disguised as gamification. Turn user activity into meaningful engagement insights with a complete award system.
                             </Text>
                             <div className="flex flex-col sm:flex-row justify-center gap-3">
-                                <Action href="https://github.com/Particle-Academy/laravel-fun-labs" color="indigo" size="lg">Get Started</Action>
-                                <Action color="zinc" variant="ghost" size="lg" disabled>Live Demos</Action>
+                                <Button href="https://github.com/Particle-Academy/laravel-fun-labs" color="indigo" size="lg">Get Started</Button>
+                                <Button color="zinc" variant="ghost" size="lg" disabled>Live Demos</Button>
                             </div>
                         </div>
                     </section>
@@ -155,9 +155,9 @@ export default function LaravelFunLabs() {
                             </Card.Body>
                         </Card>
                         <div className="mt-6">
-                            <Action href="https://github.com/Particle-Academy/laravel-fun-labs" color="zinc" size="md" className="!bg-slate-900 !text-white hover:!bg-slate-800">
+                            <Button href="https://github.com/Particle-Academy/laravel-fun-labs" color="zinc" size="md" className="!bg-slate-900 !text-white hover:!bg-slate-800">
                                 View on GitHub
-                            </Action>
+                            </Button>
                         </div>
                     </section>
                 </main>

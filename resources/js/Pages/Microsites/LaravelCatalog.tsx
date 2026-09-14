@@ -1,5 +1,5 @@
 import { Head, usePage } from "@inertiajs/react";
-import { Action, Badge, Card, Heading, Text } from "@particle-academy/react-fancy";
+import { Badge, Button, Card, Heading, Text } from "@particle-academy/react-fancy";
 import {
     BookOpen,
     Box,
@@ -60,7 +60,7 @@ export default function LaravelCatalog() {
                             <a href="#install" className="text-gray-600 hover:text-red-600 px-3 py-2 font-medium">Installation</a>
                             <a href="https://github.com/Particle-Academy/laravel-catalog" className="text-gray-600 hover:text-red-600 px-3 py-2 font-medium">GitHub</a>
                         </nav>
-                        <Action color="red" size="sm" href="https://github.com/Particle-Academy/laravel-catalog">Get Started</Action>
+                        <Button color="red" size="sm" href="https://github.com/Particle-Academy/laravel-catalog">Get Started</Button>
                     </div>
                 </header>
 
@@ -76,12 +76,12 @@ export default function LaravelCatalog() {
                                 Product and subscription management catalog with Stripe integration.
                             </Text>
                             <div className="flex flex-col sm:flex-row justify-center gap-3">
-                                <Action href="https://github.com/Particle-Academy/laravel-catalog" color="zinc" size="lg" className="!bg-white !text-red-700 hover:!bg-gray-100">
+                                <Button href="https://github.com/Particle-Academy/laravel-catalog" color="zinc" size="lg" className="!bg-white !text-red-700 hover:!bg-gray-100">
                                     Get Started
-                                </Action>
-                                <Action color="zinc" variant="ghost" size="lg" className="!text-white" disabled>
+                                </Button>
+                                <Button color="zinc" variant="ghost" size="lg" className="!text-white" disabled>
                                     Live Demos
-                                </Action>
+                                </Button>
                             </div>
                         </div>
                     </section>
@@ -161,9 +161,9 @@ export default function LaravelCatalog() {
                                 </Card.Body>
                             </Card>
                             <div className="mt-6">
-                                <Action href="https://github.com/Particle-Academy/laravel-catalog" color="zinc" size="md" className="!bg-gray-900 !text-white hover:!bg-gray-800">
+                                <Button href="https://github.com/Particle-Academy/laravel-catalog" color="zinc" size="md" className="!bg-gray-900 !text-white hover:!bg-gray-800">
                                     View on GitHub
-                                </Action>
+                                </Button>
                             </div>
                         </section>
                     </div>
