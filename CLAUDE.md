@@ -12,7 +12,7 @@ Particle Academy marketing site — Laravel + Inertia + React + Tailwind v4. Mul
 - `composer run dev:ssr` — same as `dev` plus `php artisan inertia:start-ssr` (Node SSR on port 13714). Use when working on SSR-specific behavior.
 - `npm run build` — builds **both** client and SSR bundles. The SSR bundle lands in `bootstrap/ssr/ssr.js`. **Vite manifest errors** mean you need to run this (or `npm run dev`).
 - `npm run build:client` / `npm run build:ssr` — build one bundle at a time.
-- `vendor/bin/pint --dirty` — format changed files. Run before finalizing edits. Don't use `--test`.
+- `vendor/bin/pint --dirty` — format changed files. Run before finalizing edits: CI runs `vendor/bin/pint --test` and fails on any unformatted file. (Locally, format rather than `--test`, which only reports.)
 - `php artisan test --compact` — run all Pest tests.
 - `php artisan test --compact tests/Feature/SubdomainTest.php` — single file.
 - `php artisan test --compact --filter=testName` — single test.

@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 ### Added
 - **CI** (`.github/workflows/ci.yml`): the org's third-party dependency allowlist gate, plus type-check, both Vite bundles and the Pest suite on every push to `main` and every pull request. The site previously had no workflows, so nothing checked any of it.
+- **Pint style check in CI** (`vendor/bin/pint --test`, after the tests). Pint was already a dev dependency but nothing ran it, and eleven PHP files had drifted; they were formatted in a commit of their own.
 - **No MCP secret files** (`.github/workflows/no-mcp-secrets.yml`): rejects a push or pull request that tracks an `mcp.json` config, which routinely holds API tokens.
 
 ### Changed

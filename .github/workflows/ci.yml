@@ -96,3 +96,12 @@ jobs:
       # In-memory sqlite (see phpunit.xml), so there is no database service.
       - name: Tests
         run: php artisan test --compact
+
+      # Pint was a dev dependency that nothing called, so eleven files had
+      # drifted by the time it first ran. Same job as the tests, as in the
+      # sibling packages, but AFTER them and on `!cancelled()`: a formatting
+      # slip should not hide a test result, and a failing test should not hide
+      # the formatting.
+      - name: Style (pint)
+        if: ${{ !cancelled() }}
+        run: vendor/bin/pint --test
