@@ -45,10 +45,6 @@ Route::domain($host)->group(function () {
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    // TEMP — Inertia plumbing verification. Delete once /privacy or another
-    // page has been migrated and verified.
-    Route::get('/_inertia-test', fn () => Inertia::render('Test'));
-
     // Admin routes - protected by auth middleware
     Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
