@@ -49,6 +49,10 @@ jobs:
 
   app:
     name: Type-check, build + tests
+    # The gate must BLOCK the install, not run beside it. Without this the
+    # allowlist job finished after `composer install` and `npm ci` had already
+    # executed install lifecycle scripts on the runner -- a report, not a gate.
+    needs: allowlist
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
