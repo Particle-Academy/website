@@ -96,13 +96,19 @@ final class FancyKit
         ];
     }
 
-    /** @return array{title: string, eyebrow: string, body: string, capabilities: list<string>, languages: list<string>} */
+    /**
+     * Copy and URL from Prism itself (2026-11-01). Budget-capped calls belong to
+     * prism-harness, not core, so the body must not credit core with them.
+     *
+     * @return array{title: string, eyebrow: string, body: string, href: string, capabilities: list<string>, languages: list<string>}
+     */
     private static function prism(): array
     {
         return [
             'title' => 'Prism',
             'eyebrow' => 'The AI and agent layer',
-            'body' => 'Prism is the LLM layer the kit builds on, and what makes it an agent platform. A maintained fork of prism-php/prism, it gives you text, structured output and streaming across providers, with per-run spend attribution.',
+            'body' => 'Prism is the AI layer the kit builds on: one interface to 18 LLM providers for text, structured output, streaming, embeddings, images and audio, plus an agent harness for durable sessions and budget-capped calls. A maintained fork of prism-php/prism, with TypeScript and Python ports.',
+            'href' => 'https://ai.particle.academy',
             'capabilities' => [
                 'Durable agent sessions',
                 'MCP tools',

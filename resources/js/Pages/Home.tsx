@@ -14,6 +14,7 @@ interface Kit {
         title: string;
         eyebrow: string;
         body: string;
+        href: string;
         capabilities: string[];
         languages: string[];
     };
@@ -84,6 +85,17 @@ function KitSection({ kit }: { kit: Kit }) {
                         ))}
                         .
                     </p>
+                    <div>
+                        <Button
+                            href={kit.prism.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            color="violet"
+                            iconTrailing="arrow-up-right"
+                        >
+                            Explore Prism
+                        </Button>
+                    </div>
                 </Card.Body>
             </Card>
 

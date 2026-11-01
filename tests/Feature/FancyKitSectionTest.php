@@ -34,9 +34,15 @@ test('every family names itself and says what it is', function () {
 test('Prism is presented as the agent platform layer, with its capabilities', function () {
     $prism = FancyKit::toArray()['prism'];
 
-    expect($prism['body'])->toContain('agent platform')
+    expect($prism['body'])->toContain('AI layer the kit builds on')
+        ->and($prism['body'])->not->toContain('per-run spend attribution')
         ->and($prism['capabilities'])->toContain('Durable agent sessions')
         ->and($prism['languages'])->toBe(['PHP', 'Node', 'Python']);
+});
+
+test('the Prism card links to Prism\'s own site', function () {
+    expect(FancyKit::toArray()['prism']['href'])->toBe('https://ai.particle.academy')
+        ->and(file_get_contents(resource_path('js/Pages/Home.tsx')))->toContain('href={kit.prism.href}');
 });
 
 test('how to start points at the kit showcase, its MCP, the CLI and the starter kit', function () {
