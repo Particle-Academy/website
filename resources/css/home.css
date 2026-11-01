@@ -566,7 +566,7 @@ html { scroll-padding-top: 80px; }
   background: var(--bg-0);
   padding: 54px 0 40px;
 }
-.pa-home .foot-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 32px; }
+.pa-home .foot-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr 1fr; gap: 32px; }
 .pa-home .foot-brand .brand { margin-bottom: 14px; }
 .pa-home .foot-brand p {
   font-size: var(--text-sm);
@@ -855,4 +855,123 @@ html { scroll-padding-top: 80px; }
 
 @media (max-width: 880px) {
   .pa-home .page-grid { grid-template-columns: 1fr; }
+}
+
+/* the Fancy kit (home #kit) — tiles are react-fancy <Card>s; these rules only
+   lay them out and size their contents to match the sections around them. */
+.pa-home #kit { padding-top: 0; }
+.pa-home .kit-families { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 50px; }
+.pa-home .kit-card { height: 100%; }
+.pa-home .kit-card-body { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.pa-home .kit-card .ic,
+.pa-home .kit-prism .ic {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.pa-home .kit-card .ic [data-react-fancy-icon],
+.pa-home .kit-prism .ic [data-react-fancy-icon] { width: 19px; height: 19px; }
+.pa-home .kit-card h3,
+.pa-home .kit-prism h3,
+.pa-home .kit-mirrors h3,
+.pa-home .kit-start-head h3 {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -.01em;
+  color: var(--fg-1);
+}
+.pa-home .kit-card h4 { margin: 0; font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--fg-1); }
+.pa-home .kit-card p,
+.pa-home .kit-mirrors p,
+.pa-home .kit-prism p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+  line-height: var(--leading-normal);
+}
+.pa-home .kit-prism { margin-top: 14px; }
+.pa-home .kit-prism-body { display: flex; flex-direction: column; gap: 14px; }
+.pa-home .kit-prism-body > p:first-of-type { font-size: var(--text-base); color: var(--fg-2); max-width: 70ch; }
+.pa-home .kit-prism-head { display: flex; align-items: center; gap: 14px; }
+.pa-home .kit-prism-head h3 { font-size: var(--text-2xl); }
+.pa-home .kit-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+}
+.pa-home .kit-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pa-home .kit-langs strong { color: var(--fg-2); font-weight: var(--weight-semibold); }
+.pa-home .kit-mirrors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-1);
+}
+.pa-home .kit-mirrors > div { display: flex; flex-direction: column; gap: 12px; }
+.pa-home .kit-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: var(--text-sm); color: var(--fg-2); }
+.pa-home .kit-list li { display: flex; align-items: center; gap: 8px; }
+.pa-home .kit-list [data-react-fancy-icon] { width: 15px; height: 15px; color: var(--emerald-500); flex: none; }
+.pa-home .kit-start-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-1);
+}
+.pa-home .kit-start { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+.pa-home .kit-start-title { display: flex; align-items: center; gap: 8px; color: var(--fg-1); }
+.pa-home .kit-start-title [data-react-fancy-icon] { width: 17px; height: 17px; color: var(--accent); }
+.pa-home .kit-cmd {
+  margin-top: auto;
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  background: var(--bg-1);
+  border: 1px solid var(--border-1);
+  color: var(--fg-1);
+  overflow-wrap: anywhere;
+}
+.pa-home .kit-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--accent);
+  text-decoration: none;
+}
+.pa-home .kit-link:hover { text-decoration: underline; }
+.pa-home .kit-link [data-react-fancy-icon] { width: 14px; height: 14px; }
+
+@media (max-width: 1024px) {
+  .pa-home .kit-start { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 880px) {
+  .pa-home .kit-families,
+  .pa-home .kit-mirrors,
+  .pa-home .kit-start { grid-template-columns: 1fr; }
+  .pa-home .kit-start-head { flex-direction: column; align-items: flex-start; }
+}
+
+/* header call to action: the full label pushed the header 9px past a 390px
+   viewport, so narrow screens get the short one. */
+.pa-home .nav-cta .cta-short { display: none; }
+@media (max-width: 480px) {
+  .pa-home .nav-cta .cta-long { display: none; }
+  .pa-home .nav-cta .cta-short { display: inline; }
 }

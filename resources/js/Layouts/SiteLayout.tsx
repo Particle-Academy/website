@@ -89,13 +89,15 @@ export default function SiteLayout({
                     <nav className="nav-links">
                         <Link href="/#foundations">The accelerator</Link>
                         <Link href="/#pillars">What you'll build</Link>
+                        <Link href="/#kit">The Fancy kit</Link>
                         <Link href="/#community">Community</Link>
                         <Link href="/#join">Waiting list</Link>
                     </nav>
                     <div className="nav-right">
                         <ThemeToggle />
-                        <Link className="btn btn-primary" href="/#join">
-                            Join the waiting list
+                        <Link className="btn btn-primary nav-cta" href="/#join">
+                            <span className="cta-long">Join the waiting list</span>
+                            <span className="cta-short">Join</span>
                         </Link>
                     </div>
                 </div>
@@ -135,6 +137,13 @@ export default function SiteLayout({
                             <Link href="/#pillars">Skills tracks</Link>
                             <Link href="/#community">Community</Link>
                             <Link href="/coaches">Coaches</Link>
+                        </div>
+                        <div className="foot-col">
+                            <h5>Build</h5>
+                            <Link href="/#kit">The Fancy kit</Link>
+                            <a href="https://ui.particle.academy" target="_blank" rel="noreferrer">
+                                ui.particle.academy
+                            </a>
                         </div>
                         <div className="foot-col">
                             <h5>Join</h5>
