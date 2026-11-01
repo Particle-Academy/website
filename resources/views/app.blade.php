@@ -33,8 +33,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])
     @inertiaHead
@@ -63,9 +61,6 @@
         ]
     }
     </script>
-
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init({ once: true });</script>
 
     @if (app()->environment('production'))
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZCEJMHBR0"></script>
