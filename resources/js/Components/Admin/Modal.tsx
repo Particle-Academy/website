@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+import { Icon } from "@particle-academy/react-fancy";
 import type { ReactNode } from "react";
 
 interface ModalProps {
@@ -33,8 +33,9 @@ export default function Modal({
                         type="button"
                         onClick={onClose}
                         className="text-gray-400 hover:text-gray-600"
+                        aria-label="Close"
                     >
-                        <X className="w-5 h-5" />
+                        <Icon name="x" size="md" />
                     </button>
                 </div>
                 <div className="p-6">{children}</div>

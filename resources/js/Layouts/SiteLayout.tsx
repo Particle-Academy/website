@@ -1,5 +1,5 @@
+import { Icon } from "@particle-academy/react-fancy";
 import { Head, Link } from "@inertiajs/react";
-import { ArrowUpRight, Moon, Sun } from "lucide-react";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import "../../css/home.css";
 
@@ -49,8 +49,8 @@ function ThemeToggle() {
 
     return (
         <button type="button" className="icon-btn" onClick={toggle} aria-label="Toggle theme">
-            <Sun className="sun" />
-            <Moon className="moon" />
+            <Icon name="sun" className="sun" />
+            <Icon name="moon" className="moon" />
         </button>
     );
 }
@@ -126,7 +126,7 @@ export default function SiteLayout({
                                 rel="noreferrer"
                             >
                                 A <strong>Civicognita</strong> Initiative
-                                <ArrowUpRight />
+                                <Icon name="arrow-up-right" />
                             </a>
                         </div>
                         <div className="foot-col">

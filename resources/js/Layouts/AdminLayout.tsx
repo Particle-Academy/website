@@ -1,15 +1,5 @@
+import { Icon } from "@particle-academy/react-fancy";
 import { Head, Link, router, usePage } from "@inertiajs/react";
-import {
-    Building2,
-    Home,
-    LayoutGrid,
-    LogOut,
-    Menu,
-    Star,
-    UserCog,
-    Users,
-    X,
-} from "lucide-react";
 import { useState, type ReactNode } from "react";
 
 interface AdminLayoutProps {
@@ -34,25 +24,25 @@ const NAV: NavItemConfig[] = [
     {
         href: "/admin",
         label: "Dashboard",
-        icon: <LayoutGrid className="w-5 h-5" />,
+        icon: <Icon name="layout-grid" size="md" />,
         routeName: "admin.dashboard",
     },
     {
         href: "/admin/waitinglist",
         label: "Waiting List",
-        icon: <Users className="w-5 h-5" />,
+        icon: <Icon name="users" size="md" />,
         routeName: "admin.waitinglist",
     },
     {
         href: "/admin/stories",
         label: "Success Stories",
-        icon: <Star className="w-5 h-5" />,
+        icon: <Icon name="star" size="md" />,
         routeName: "admin.stories",
     },
     {
         href: "/admin/partners",
         label: "Partners",
-        icon: <Building2 className="w-5 h-5" />,
+        icon: <Icon name="building-2" size="md" />,
         routeName: "admin.partners",
     },
 ];
@@ -88,8 +78,10 @@ export default function AdminLayout({ title, heading, children }: AdminLayoutPro
                             type="button"
                             onClick={() => setMobileOpen((v) => !v)}
                             className="lg:hidden p-2"
+                            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                            aria-expanded={mobileOpen}
                         >
-                            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                            {mobileOpen ? <Icon name="x" size="md" /> : <Icon name="menu" size="md" />}
                         </button>
 
                         <Link
@@ -126,17 +118,17 @@ export default function AdminLayout({ title, heading, children }: AdminLayoutPro
                                 href="/"
                                 className="hidden lg:flex items-center gap-1 px-2 py-1 text-sm hover:text-cyan-100"
                             >
-                                <Home className="w-4 h-4" /> View Site
+                                <Icon name="home" size="sm" /> View Site
                             </a>
                             <span className="hidden sm:inline-flex items-center gap-2 px-2 py-1 text-sm">
-                                <UserCog className="w-4 h-4" /> {userName}
+                                <Icon name="user-cog" size="sm" /> {userName}
                             </span>
                             <button
                                 type="button"
                                 onClick={handleLogout}
                                 className="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-white/10 hover:bg-white/20 rounded-md"
                             >
-                                <LogOut className="w-4 h-4" /> Logout
+                                <Icon name="log-out" size="sm" /> Logout
                             </button>
                         </div>
                     </div>

@@ -1,15 +1,5 @@
 import { Head, usePage } from "@inertiajs/react";
-import { Badge, Button, Card, Heading, Text } from "@particle-academy/react-fancy";
-import {
-    BookOpen,
-    Box,
-    CheckCircle2,
-    Clipboard,
-    DollarSign,
-    Puzzle,
-    RefreshCw,
-    ShoppingBag,
-} from "lucide-react";
+import { Badge, Button, Card, Heading, Icon, Text } from "@particle-academy/react-fancy";
 import type { ReactNode } from "react";
 
 interface SharedProps {
@@ -53,7 +43,7 @@ export default function LaravelCatalog() {
                 <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
                     <div className="container mx-auto px-4 py-3 flex justify-between items-center max-w-7xl">
                         <a href="#" className="font-bold text-xl text-red-600 flex items-center gap-2">
-                            <BookOpen className="w-6 h-6" /> Laravel Catalog
+                            <Icon name="book-open" size="lg" /> Laravel Catalog
                         </a>
                         <nav className="hidden md:flex gap-1 text-sm">
                             <a href="#features" className="text-gray-600 hover:text-red-600 px-3 py-2 font-medium">Features</a>
@@ -69,7 +59,7 @@ export default function LaravelCatalog() {
                         <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800" />
                         <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
                             <Badge color="red" variant="soft" className="mb-6 !bg-red-700/40 !text-white !border-red-400/50">
-                                <ShoppingBag className="w-3.5 h-3.5 mr-1 inline" /> Commerce for Laravel
+                                <Icon name="shopping-bag" size="sm" className="size-3.5 [&>svg]:size-full mr-1" /> Commerce for Laravel
                             </Badge>
                             <Heading as="h1" size="xl" className="text-white mb-4">Laravel Catalog</Heading>
                             <Text size="lg" className="text-red-100 max-w-2xl mx-auto mb-10">
@@ -99,9 +89,9 @@ export default function LaravelCatalog() {
                             </div>
 
                             <div className="grid md:grid-cols-3 gap-5">
-                                <Feature icon={<Box className="w-6 h-6" />} title="Product Management" body="Create, edit, and manage Stripe products with full CRUD operations directly from your app." />
-                                <Feature icon={<DollarSign className="w-6 h-6" />} title="Flexible Pricing" body="Support for recurring subscriptions and one-time purchases with multiple intervals." />
-                                <Feature icon={<RefreshCw className="w-6 h-6" />} title="Stripe Sync" body="Automatic or manual synchronization with Stripe's catalog to keep everything in sync." />
+                                <Feature icon={<Icon name="box" size="lg" />} title="Product Management" body="Create, edit, and manage Stripe products with full CRUD operations directly from your app." />
+                                <Feature icon={<Icon name="dollar-sign" size="lg" />} title="Flexible Pricing" body="Support for recurring subscriptions and one-time purchases with multiple intervals." />
+                                <Feature icon={<Icon name="refresh-cw" size="lg" />} title="Stripe Sync" body="Automatic or manual synchronization with Stripe's catalog to keep everything in sync." />
                             </div>
                         </section>
 
@@ -122,7 +112,7 @@ export default function LaravelCatalog() {
                                             "Toggle features on/off per plan",
                                         ].map((line) => (
                                             <li key={line} className="flex items-center gap-2">
-                                                <CheckCircle2 className="text-green-500 w-5 h-5" />
+                                                <Icon name="check-circle-2" size="md" className="text-green-500" />
                                                 <span className="text-gray-200">{line}</span>
                                             </li>
                                         ))}
@@ -156,7 +146,7 @@ export default function LaravelCatalog() {
                                 <Card.Body className="p-4 flex items-center justify-between gap-4">
                                     <code className="font-mono text-sm text-red-700">composer require particle-academy/laravel-catalog</code>
                                     <button type="button" className="text-gray-400 hover:text-gray-600">
-                                        <Clipboard className="w-5 h-5" />
+                                        <Icon name="clipboard" size="md" />
                                     </button>
                                 </Card.Body>
                             </Card>
@@ -173,7 +163,7 @@ export default function LaravelCatalog() {
                     <div className="container mx-auto px-4 max-w-7xl">
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
                             <div className="font-bold text-lg text-gray-900 flex items-center gap-2">
-                                <BookOpen className="w-5 h-5 text-red-500" /> Laravel Catalog
+                                <Icon name="book-open" size="md" className="text-red-500" /> Laravel Catalog
                             </div>
                             <div className="flex gap-6 text-sm">
                                 <a href={`${appUrl}/privacy`} className="text-gray-600 hover:text-red-600">Privacy</a>

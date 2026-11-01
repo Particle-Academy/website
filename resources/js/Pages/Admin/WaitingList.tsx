@@ -5,12 +5,12 @@ import {
     Card,
     Field,
     Heading,
+    Icon,
     Input,
     Switch,
     Text,
     Textarea,
 } from "@particle-academy/react-fancy";
-import { Pencil, Trash2 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import Modal from "../../Components/Admin/Modal";
 import Pagination, { type Paginator } from "../../Components/Admin/Pagination";
@@ -156,7 +156,7 @@ export default function WaitingList({ waitingLists }: WaitingListProps) {
                                                         className="p-1.5 text-violet-600 hover:bg-violet-50 rounded"
                                                         title="Edit"
                                                     >
-                                                        <Pencil className="w-4 h-4" />
+                                                        <Icon name="pencil" size="sm" />
                                                     </button>
                                                     <button
                                                         type="button"
@@ -164,7 +164,7 @@ export default function WaitingList({ waitingLists }: WaitingListProps) {
                                                         className="p-1.5 text-red-600 hover:bg-red-50 rounded"
                                                         title="Delete"
                                                     >
-                                                        <Trash2 className="w-4 h-4" />
+                                                        <Icon name="trash-2" size="sm" />
                                                     </button>
                                                 </div>
                                             </td>

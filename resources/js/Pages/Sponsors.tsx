@@ -1,4 +1,4 @@
-import { ArrowRight, Heart } from "lucide-react";
+import { Icon } from "@particle-academy/react-fancy";
 import SiteLayout from "../Layouts/SiteLayout";
 
 export default function Sponsors() {
@@ -20,7 +20,7 @@ export default function Sponsors() {
                         marginBottom: 8,
                     }}
                 >
-                    <Heart />
+                    <Icon name="heart" size="lg" />
                 </div>
                 <span className="eyebrow">
                     <span className="pip" />
@@ -37,7 +37,7 @@ export default function Sponsors() {
                 <div style={{ marginTop: 24 }}>
                     <a className="btn btn-primary btn-lg" href="mailto:info@particle.academy">
                         Get in touch
-                        <ArrowRight />
+                        <Icon name="arrow-right" />
                     </a>
                 </div>
             </section>

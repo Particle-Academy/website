@@ -1,5 +1,5 @@
+import { Icon } from "@particle-academy/react-fancy";
 import { useForm } from "@inertiajs/react";
-import { ArrowRight, Lock, Mail } from "lucide-react";
 import type { FormEvent } from "react";
 import SiteLayout from "../../Layouts/SiteLayout";
 
@@ -30,7 +30,7 @@ export default function Login() {
                                 Email
                             </label>
                             <div className="input">
-                                <Mail />
+                                <Icon name="mail" />
                                 <input
                                     id="email"
                                     type="email"
@@ -52,7 +52,7 @@ export default function Login() {
                                 Password
                             </label>
                             <div className="input">
-                                <Lock />
+                                <Icon name="lock" />
                                 <input
                                     id="password"
                                     type="password"
@@ -83,7 +83,7 @@ export default function Login() {
                             disabled={form.processing}
                         >
                             Log in
-                            <ArrowRight />
+                            <Icon name="arrow-right" />
                         </button>
                     </form>
                 </div>

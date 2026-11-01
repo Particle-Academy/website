@@ -1,18 +1,5 @@
+import { Icon } from "@particle-academy/react-fancy";
 import { useForm, usePage } from "@inertiajs/react";
-import {
-    ArrowRight,
-    BookOpen,
-    Briefcase,
-    CheckCircle2,
-    Compass,
-    Hammer,
-    HeartHandshake,
-    Laptop,
-    Rocket,
-    ShieldCheck,
-    Swords,
-    UsersRound,
-} from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import SiteLayout from "../Layouts/SiteLayout";
 
@@ -23,19 +10,19 @@ interface SharedProps {
 const FOUNDATIONS = [
     {
         tone: "t-indigo",
-        Icon: UsersRound,
+        icon: "users-round",
         title: "Community",
         body: "A room of people moving in the same direction. Accountability, honest feedback, and momentum you can't manufacture alone.",
     },
     {
         tone: "t-sky",
-        Icon: BookOpen,
+        icon: "book-open",
         title: "Knowledge",
         body: "Mentorship and frameworks from people who've done it — so you spend your energy executing, not guessing.",
     },
     {
         tone: "t-emerald",
-        Icon: Hammer,
+        icon: "hammer",
         title: "Practical skills",
         body: "Hands-on work, not theory. You leave each block with something built, shipped, or earned.",
     },
@@ -44,42 +31,42 @@ const FOUNDATIONS = [
 const PILLARS = [
     {
         tone: "t-blue",
-        Icon: Rocket,
+        icon: "rocket",
         n: "01",
         title: "Entrepreneurship",
         body: "Turn an idea into something real — validation, first customers, and the discipline to keep going.",
     },
     {
         tone: "t-violet",
-        Icon: Compass,
+        icon: "compass",
         n: "02",
         title: "Leadership",
         body: "Lead yourself first, then others. Decision-making, communication, and presence under pressure.",
     },
     {
         tone: "t-sky",
-        Icon: Laptop,
+        icon: "laptop",
         n: "03",
         title: "Digital skills",
         body: "The practical, modern toolkit — building, automating, and working alongside AI with confidence.",
     },
     {
         tone: "t-rose",
-        Icon: Swords,
+        icon: "swords",
         n: "04",
         title: "Martial arts",
         body: "Discipline trained through the body. Focus, resilience, and respect that carry into everything else.",
     },
     {
         tone: "t-amber",
-        Icon: Briefcase,
+        icon: "briefcase",
         n: "05",
         title: "Business development",
         body: "Growth that lasts — offers, relationships, and systems that compound past the first win.",
     },
     {
         tone: "t-emerald",
-        Icon: HeartHandshake,
+        icon: "heart-handshake",
         n: "06",
         title: "Mentorship",
         body: "Guidance both ways. Learn from those ahead of you, then become the mentor for those behind.",
@@ -389,7 +376,7 @@ function WaitlistForm({ submitLabel, submitted, onSubmitted }: WaitlistFormProps
     if (submitted) {
         return (
             <div className="wl-success">
-                <CheckCircle2 />
+                <Icon name="check-circle-2" />
                 You're on the list — we'll be in touch.
             </div>
         );
@@ -408,7 +395,7 @@ function WaitlistForm({ submitLabel, submitted, onSubmitted }: WaitlistFormProps
             />
             <button className="btn btn-primary" type="submit" disabled={form.processing}>
                 {submitLabel}
-                <ArrowRight />
+                <Icon name="arrow-right" />
             </button>
         </form>
     );
@@ -467,7 +454,7 @@ export default function Home() {
 
                     {!submitted && (
                         <p className="wl-note">
-                            <ShieldCheck />
+                            <Icon name="shield-check" />
                             No spam. Early members shape the first cohort.
                         </p>
                     )}
@@ -490,7 +477,7 @@ export default function Home() {
                     {FOUNDATIONS.map((f) => (
                         <div className="f" key={f.title}>
                             <div className={`ic ${f.tone}`}>
-                                <f.Icon />
+                                <Icon name={f.icon} />
                             </div>
                             <h3>{f.title}</h3>
                             <p>{f.body}</p>
@@ -516,7 +503,7 @@ export default function Home() {
                         <div className="pillar" key={p.title}>
                             <div className="pillar-top">
                                 <div className={`ic ${p.tone}`}>
-                                    <p.Icon />
+                                    <Icon name={p.icon} />
                                 </div>
                                 <span className="n">{p.n}</span>
                             </div>
