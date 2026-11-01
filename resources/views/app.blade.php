@@ -49,15 +49,9 @@
         "logo": "{{ asset('images/particle1.png') }}",
         "contactPoint": {
             "@@type": "ContactPoint",
-            "telephone": "+1-123-456-7890",
             "contactType": "customer service",
             "email": "info@particle.academy"
-        },
-        "sameAs": [
-            "https://facebook.com/particleacademy",
-            "https://twitter.com/particleacademy",
-            "https://instagram.com/particleacademy"
-        ]
+        }
     }
     </script>
 

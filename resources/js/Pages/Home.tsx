@@ -686,7 +686,7 @@ export default function Home({ kit }: { kit: Kit }) {
                             </div>
                             <div className="why-stats">
                                 <div className="s">
-                                    <div className="v">7</div>
+                                    <div className="v">{PILLARS.length}</div>
                                     <div className="l">Skills tracks</div>
                                 </div>
                                 <div className="s">

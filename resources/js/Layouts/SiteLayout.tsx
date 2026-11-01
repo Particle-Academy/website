@@ -95,8 +95,9 @@ export default function SiteLayout({
                     </nav>
                     <div className="nav-right">
                         <ThemeToggle />
-                        <Link className="btn btn-primary" href="/#join">
-                            Join the waiting list
+                        <Link className="btn btn-primary nav-cta" href="/#join">
+                            <span className="cta-long">Join the waiting list</span>
+                            <span className="cta-short">Join</span>
                         </Link>
                     </div>
                 </div>

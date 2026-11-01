@@ -967,3 +967,11 @@ html { scroll-padding-top: 80px; }
   .pa-home .kit-start { grid-template-columns: 1fr; }
   .pa-home .kit-start-head { flex-direction: column; align-items: flex-start; }
 }
+
+/* header call to action: the full label pushed the header 9px past a 390px
+   viewport, so narrow screens get the short one. */
+.pa-home .nav-cta .cta-short { display: none; }
+@media (max-width: 480px) {
+  .pa-home .nav-cta .cta-long { display: none; }
+  .pa-home .nav-cta .cta-short { display: inline; }
+}
