@@ -27,11 +27,10 @@
     <link rel="canonical" href="{{ url('/') }}">
     <link rel="icon" href="{{ asset('images/particle1.png') }}" type="image/png">
 
-    {{-- Geist is the site typeface (--font-sans / --font-mono). Load it here, not with
-         a CSS @import: the build drops any @import that is not the first rule. --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    {{-- Geist is the site typeface (--font-sans), self-hosted from public/fonts/geist and
+         declared with @font-face in design-tokens.css. Preload the body face so text
+         does not wait for the stylesheet to be parsed before the font is requested. --}}
+    <link rel="preload" href="/fonts/geist/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
 
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])

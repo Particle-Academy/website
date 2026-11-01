@@ -9,9 +9,10 @@ use Symfony\Component\Finder\Finder;
  * unpkg in the page head for months after the last `data-aos` attribute had
  * been deleted, and nothing in CI could have noticed.
  *
- * Scoped to package CDNs on purpose. The Google Fonts stylesheet (asserted by
- * WebFontsTest) and the production-only analytics tag are separate decisions,
- * not packages, and this test does not pretend to have settled them.
+ * Google's font hosts are on the list for the same reason: Geist is
+ * self-hosted from public/fonts/geist (see WebFontsTest). The production-only
+ * analytics tag is a separate product decision, and this test does not
+ * pretend to have settled it.
  */
 
 const PACKAGE_CDN_HOSTS = [
@@ -21,6 +22,8 @@ const PACKAGE_CDN_HOSTS = [
     'esm.sh',
     'cdn.skypack.dev',
     'ga.jspm.io',
+    'fonts.googleapis.com',
+    'fonts.gstatic.com',
 ];
 
 /**
