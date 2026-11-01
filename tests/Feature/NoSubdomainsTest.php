@@ -76,8 +76,15 @@ function subdomainScanFiles(): array
 }
 
 /**
- * Hosts under particle.academy found in a string, other than the apex and
- * ui.particle.academy (the Fancy kit's own showcase, a separate app).
+ * The separate apps this site may link to. They are their own sites, not
+ * subdomains of this one: the Fancy kit's showcase, and Prism's site (owner,
+ * 2026-11-01: "we still have the fancy and prism sites").
+ */
+const SEPARATE_APP_HOSTS = ['ui.particle.academy', 'ai.particle.academy'];
+
+/**
+ * Hosts under particle.academy found in a string, other than the apex and the
+ * separate apps in SEPARATE_APP_HOSTS.
  *
  * @return list<string>
  */
@@ -87,13 +94,14 @@ function foreignParticleSubdomains(string $source): array
 
     return array_values(array_filter(
         array_map(fn (string $sub) => strtolower($sub).'particle.academy', $matches[1]),
-        fn (string $host) => $host !== 'ui.particle.academy',
+        fn (string $host) => ! in_array($host, SEPARATE_APP_HOSTS, true),
     ));
 }
 
-test('the subdomain matcher catches a subdomain and ignores the apex, mail and the kit showcase', function () {
+test('the subdomain matcher catches a subdomain and ignores the apex, mail, the kit showcase and Prism', function () {
     expect(foreignParticleSubdomains('<a href="https://tribe-trip.particle.academy/">'))->toBe(['tribe-trip.particle.academy'])
         ->and(foreignParticleSubdomains('https://ui.particle.academy/mcp'))->toBe([])
+        ->and(foreignParticleSubdomains('https://ai.particle.academy'))->toBe([])
         ->and(foreignParticleSubdomains('mailto:info@particle.academy https://particle.academy'))->toBe([]);
 });
 
@@ -101,7 +109,7 @@ test('the link scan reads the pages it is meant to guard', function () {
     expect(array_keys(subdomainScanFiles()))->toContain(str_replace('\\', '/', realpath(resource_path('js/Pages/Home.tsx'))));
 });
 
-test('no source links to a particle.academy subdomain other than ui.particle.academy', function () {
+test('no source links to a particle.academy subdomain other than the separate apps', function () {
     $offenders = [];
 
     foreach (subdomainScanFiles() as $path => $source) {
@@ -113,7 +121,7 @@ test('no source links to a particle.academy subdomain other than ui.particle.aca
     expect($offenders)->toBe([]);
 });
 
-test('no rendered page links to a particle.academy subdomain other than ui.particle.academy', function (string $uri) {
+test('no rendered page links to a particle.academy subdomain other than the separate apps', function (string $uri) {
     $html = $this->get($uri)->assertSuccessful()->getContent();
 
     expect(foreignParticleSubdomains(html_entity_decode($html)))->toBe([]);
