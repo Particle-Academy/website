@@ -1,6 +1,5 @@
 import { Link } from "@inertiajs/react";
-import { Badge, Card, Heading, Text } from "@particle-academy/react-fancy";
-import { Building2, Star, Users, type LucideIcon } from "lucide-react";
+import { Badge, Card, Heading, Icon, Text } from "@particle-academy/react-fancy";
 import AdminLayout from "../../Layouts/AdminLayout";
 
 interface DashboardProps {
@@ -15,13 +14,13 @@ interface StatCardProps {
     href: string;
     label: string;
     value: number;
-    Icon: LucideIcon;
+    icon: string;
     accentBg: string;
     accentText: string;
     badge: string;
 }
 
-function StatCard({ href, label, value, Icon, accentBg, accentText, badge }: StatCardProps) {
+function StatCard({ href, label, value, icon, accentBg, accentText, badge }: StatCardProps) {
     return (
         <Link
             href={href}
@@ -33,7 +32,7 @@ function StatCard({ href, label, value, Icon, accentBg, accentText, badge }: Sta
                         <div
                             className={`w-12 h-12 rounded-xl ${accentBg} ${accentText} flex items-center justify-center`}
                         >
-                            <Icon className="w-6 h-6" />
+                            <Icon name={icon} size="lg" />
                         </div>
                         <Badge color="zinc" variant="soft" size="sm">
                             {badge}
@@ -59,7 +58,7 @@ export default function Dashboard({ counts }: DashboardProps) {
                     href="/admin/waitinglist"
                     label="Waiting list entries"
                     value={counts.waiting_list}
-                    Icon={Users}
+                    icon="users"
                     accentBg="bg-cyan-100"
                     accentText="text-cyan-700"
                     badge="Live"
@@ -68,7 +67,7 @@ export default function Dashboard({ counts }: DashboardProps) {
                     href="/admin/stories"
                     label="Success stories"
                     value={counts.stories}
-                    Icon={Star}
+                    icon="star"
                     accentBg="bg-amber-100"
                     accentText="text-amber-700"
                     badge="Curated"
@@ -77,7 +76,7 @@ export default function Dashboard({ counts }: DashboardProps) {
                     href="/admin/partners"
                     label="Partners"
                     value={counts.partners}
-                    Icon={Building2}
+                    icon="building-2"
                     accentBg="bg-violet-100"
                     accentText="text-violet-700"
                     badge="Ordered"

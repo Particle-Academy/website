@@ -4,12 +4,12 @@ import {
     Button,
     Card,
     Field,
+    Icon,
     Input,
     Switch,
     Text,
     Textarea,
 } from "@particle-academy/react-fancy";
-import { ExternalLink, Pencil, Plus, Trash2 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import Modal from "../../Components/Admin/Modal";
 import Pagination, { type Paginator } from "../../Components/Admin/Pagination";
@@ -92,7 +92,7 @@ export default function Partners({ partners }: PartnersProps) {
         <AdminLayout heading="Partners">
             <div className="flex justify-end mb-4">
                 <Button type="button" color="violet" onClick={startCreate}>
-                    <Plus className="w-4 h-4 mr-1 inline" /> New Partner
+                    <Icon name="plus" size="sm" className="mr-1" /> New Partner
                 </Button>
             </div>
 
@@ -128,7 +128,7 @@ export default function Partners({ partners }: PartnersProps) {
                                                         rel="noreferrer"
                                                         className="inline-flex items-center gap-1 text-violet-700 hover:underline"
                                                     >
-                                                        Visit <ExternalLink className="w-3 h-3" />
+                                                        Visit <Icon name="external-link" size="xs" />
                                                     </a>
                                                 ) : (
                                                     <Text size="sm" className="text-zinc-400">
@@ -154,7 +154,7 @@ export default function Partners({ partners }: PartnersProps) {
                                                         className="p-1.5 text-violet-600 hover:bg-violet-50 rounded"
                                                         title="Edit"
                                                     >
-                                                        <Pencil className="w-4 h-4" />
+                                                        <Icon name="pencil" size="sm" />
                                                     </button>
                                                     <button
                                                         type="button"
@@ -162,7 +162,7 @@ export default function Partners({ partners }: PartnersProps) {
                                                         className="p-1.5 text-red-600 hover:bg-red-50 rounded"
                                                         title="Delete"
                                                     >
-                                                        <Trash2 className="w-4 h-4" />
+                                                        <Icon name="trash-2" size="sm" />
                                                     </button>
                                                 </div>
                                             </td>

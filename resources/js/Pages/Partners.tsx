@@ -1,10 +1,9 @@
-import { Award, Eye, Sparkles } from "lucide-react";
-import type { ReactNode } from "react";
+import { Icon } from "@particle-academy/react-fancy";
 import SiteLayout from "../Layouts/SiteLayout";
 
 interface Benefit {
     tone: string;
-    Icon: () => ReactNode;
+    icon: string;
     title: string;
     body: string;
 }
@@ -12,19 +11,19 @@ interface Benefit {
 const BENEFITS: Benefit[] = [
     {
         tone: "t-indigo",
-        Icon: () => <Sparkles />,
+        icon: "sparkles",
         title: "Community Impact",
         body: "Help us expand access to life-changing programs and resources for youth and adults.",
     },
     {
         tone: "t-sky",
-        Icon: () => <Eye />,
+        icon: "eye",
         title: "Brand Visibility",
         body: "Showcase your brand to a growing, engaged audience through events, media, and more.",
     },
     {
         tone: "t-emerald",
-        Icon: () => <Award />,
+        icon: "award",
         title: "Legacy Making",
         body: "Be part of the legacy in Milwaukee's next generation of leaders and creators.",
     },
@@ -53,7 +52,7 @@ export default function Partners() {
             <div className="page-grid">
                 {BENEFITS.map((b) => (
                     <div className="benefit-card" key={b.title}>
-                        <div className={`ic ${b.tone}`}>{b.Icon()}</div>
+                        <div className={`ic ${b.tone}`}><Icon name={b.icon} /></div>
                         <h3>{b.title}</h3>
                         <p>{b.body}</p>
                     </div>

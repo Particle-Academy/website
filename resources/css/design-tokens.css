@@ -5,10 +5,26 @@
    Accessibility target: WCAG AA across light + dark.
    ──────────────────────────────────────────────────────────────────────────── */
 
-/* The Geist + Geist Mono webfonts are loaded by a <link> in
-   resources/views/app.blade.php. Do not @import them here: this file is
-   inlined after Tailwind, and the build drops any @import that is not the
-   very first rule, so the site silently fell back to system fonts. */
+/* Geist + Geist Mono are self-hosted from public/fonts/geist (provenance,
+   hashes and licence in its NOTICE.md). Absolute /fonts/ URLs are left alone
+   by Vite and served from public/. The body face is also preloaded from
+   resources/views/app.blade.php. Never @import a remote stylesheet here: this
+   file is inlined after Tailwind and the build drops any @import that is not
+   the very first rule, which once left the whole site on system fonts. */
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/geist/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/geist/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* ─── Brand ───────────────────────────────────────────────────────────── */

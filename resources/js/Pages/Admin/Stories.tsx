@@ -4,13 +4,13 @@ import {
     Button,
     Card,
     Field,
+    Icon,
     Input,
     Select,
     Switch,
     Text,
     Textarea,
 } from "@particle-academy/react-fancy";
-import { Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import Modal from "../../Components/Admin/Modal";
 import Pagination, { type Paginator } from "../../Components/Admin/Pagination";
@@ -99,7 +99,7 @@ export default function Stories({ stories }: StoriesProps) {
         <AdminLayout heading="Success Stories">
             <div className="flex justify-end mb-4">
                 <Button type="button" color="violet" onClick={startCreate}>
-                    <Plus className="w-4 h-4 mr-1 inline" /> New Story
+                    <Icon name="plus" size="sm" className="mr-1" /> New Story
                 </Button>
             </div>
 
@@ -131,7 +131,7 @@ export default function Stories({ stories }: StoriesProps) {
                                             <td className="px-4 py-3">
                                                 <span className="inline-flex text-amber-400">
                                                     {Array.from({ length: story.rating }).map((_, i) => (
-                                                        <Star key={i} className="w-4 h-4 fill-current" />
+                                                        <Icon key={i} name="star" size="sm" className="[&>svg]:fill-current" />
                                                     ))}
                                                 </span>
                                             </td>
@@ -157,7 +157,7 @@ export default function Stories({ stories }: StoriesProps) {
                                                         className="p-1.5 text-violet-600 hover:bg-violet-50 rounded"
                                                         title="Edit"
                                                     >
-                                                        <Pencil className="w-4 h-4" />
+                                                        <Icon name="pencil" size="sm" />
                                                     </button>
                                                     <button
                                                         type="button"
@@ -165,7 +165,7 @@ export default function Stories({ stories }: StoriesProps) {
                                                         className="p-1.5 text-red-600 hover:bg-red-50 rounded"
                                                         title="Delete"
                                                     >
-                                                        <Trash2 className="w-4 h-4" />
+                                                        <Icon name="trash-2" size="sm" />
                                                     </button>
                                                 </div>
                                             </td>
