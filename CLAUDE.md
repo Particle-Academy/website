@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Particle Academy marketing site — Laravel + Inertia + React + Tailwind v4. Multi-tenant via subdomain routing for microsites (Tribe Trip, Laravel Fun Lab, Laravel Catalog). All public pages, microsites, login, and admin are Inertia-rendered React components built from `@particle-academy/react-fancy` ("Fancy UI"). Livewire and Flux UI have been fully removed.
+Particle Academy marketing site — Laravel + Inertia + React + Tailwind v4, served on ONE host with no subdomains. All public pages, login, and admin are Inertia-rendered React components built from `@particle-academy/react-fancy` ("Fancy UI"). Livewire and Flux UI have been fully removed.
+
+**The site promotes the Fancy kit as a whole, Prism included, and carries no page per Fancy package** (owner, 2026-11-01). The home page's `#kit` section renders the `kit` prop from `App\Support\FancyKit`; every sentence there comes from a first-party source listed in that class's docblock, and it types no package or component counts (they go stale; `FancyKitSectionTest` fails on one). Links to the kit's own showcase, `https://ui.particle.academy`, are wanted: that is a separate app, not a subdomain of this one.
 
 ## Commands
 
@@ -14,7 +16,7 @@ Particle Academy marketing site — Laravel + Inertia + React + Tailwind v4. Mul
 - `npm run build:client` / `npm run build:ssr` — build one bundle at a time.
 - `vendor/bin/pint --dirty` — format changed files. Run before finalizing edits: CI runs `vendor/bin/pint --test` and fails on any unformatted file. (Locally, format rather than `--test`, which only reports.)
 - `php artisan test --compact` — run all Pest tests.
-- `php artisan test --compact tests/Feature/SubdomainTest.php` — single file.
+- `php artisan test --compact tests/Feature/NoSubdomainsTest.php` — single file.
 - `php artisan test --compact --filter=testName` — single test.
 - `php artisan make:test --pest {Name}` — feature test by default; add `--unit` for unit.
 
@@ -22,7 +24,7 @@ Particle Academy marketing site — Laravel + Inertia + React + Tailwind v4. Mul
 
 **Pages are Inertia-rendered React components**, not controllers and not Livewire. Routes hit either a closure that returns `Inertia::render('PageName', [...props])` or a controller method that returns the same. Static-content pages (privacy, terms, sponsors) use closures; data/form pages (`/`, admin CRUD, `/login`) use controllers in `app/Http/Controllers/` (admin lives under `Admin/` sub-namespace; auth under `Auth/`).
 
-**Routing is split by host** in `routes/web.php`. The app URL host (parsed from `config('app.url')`) handles main-site routes; any `{subdomain}.<host>` falls through to a closure that maps the subdomain to a `Microsites/{Slug}` Inertia page using an in-route allowlist (`tribe-trip`, `laravel-fun-labs`, `laravel-catalog`), 404s on miss. Adding a microsite means: add the slug to that map and create `resources/js/Pages/Microsites/{Slug}.tsx` with its own inline header/footer. Local subdomain testing requires `*.<host>` resolving (Herd via local domains; otherwise hosts file or `.test` TLD).
+**No route has a domain constraint.** The subdomain microsites (tribe-trip, laravel-fun-labs, laravel-catalog) were removed on 2026-11-01, along with the pinning of every other route to the app host. `tests/Feature/NoSubdomainsTest.php` fails if a `Route::domain(...)` comes back or if any source links to a `*.particle.academy` host other than `ui.particle.academy`. Old subdomain URLs are redirected at DNS / Forge, outside this repo. `resources/js/Pages/Microsites/TribeTrip.tsx` is kept but has NO route, pending an owner decision on whether it moves to a path or is dropped.
 
 **React entry + app shell** live in `resources/js/app.tsx` (client) and `resources/js/ssr.tsx` (server). Both wrap the Inertia outlet in `<FancyAppRoot withScreens={false} withECharts={false}>` then `<FancyDataRoot>` (fancy-query — TanStack Query + Inertia hydration). The Inertia root template is `resources/views/app.blade.php`. Page components live under `resources/js/Pages/` (PSR-style folder names — `Pages/Auth/Login.tsx`, `Pages/Admin/Stories.tsx`, etc.). Shared layouts (`PublicLayout` / `Layout`, `AdminLayout`, `GuestLayout`) live in `resources/js/Layouts/`; cross-page React components live in `resources/js/Components/` and `resources/js/Components/Admin/`.
 

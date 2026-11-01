@@ -1,10 +1,156 @@
-import { Icon } from "@particle-academy/react-fancy";
+import { Badge, Button, Card, Icon } from "@particle-academy/react-fancy";
 import { useForm, usePage } from "@inertiajs/react";
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import SiteLayout from "../Layouts/SiteLayout";
 
 interface SharedProps {
     flash?: { message?: string };
+}
+
+/** The Fancy kit, from `App\Support\FancyKit` (every claim there is sourced). */
+interface Kit {
+    families: { key: string; title: string; icon: string; tone: string; body: string }[];
+    prism: {
+        title: string;
+        eyebrow: string;
+        body: string;
+        capabilities: string[];
+        languages: string[];
+    };
+    mirrors: { body: string; languages: string[]; registries: string[]; examples: string[] };
+    start: { title: string; icon: string; body: string; href: string | null; command: string | null }[];
+}
+
+const KIT_URL = "https://ui.particle.academy";
+
+function KitSection({ kit }: { kit: Kit }) {
+    return (
+        <section id="kit" className="wrap">
+            <div className="sec-head">
+                <span className="eyebrow">
+                    <span className="pip" />
+                    What we build
+                </span>
+                <h2>The Fancy kit.</h2>
+                <p>
+                    One kit for building apps that people and AI agents use together: React
+                    surfaces, headless engines, server backends, agentic document writers,
+                    commerce, analytics and tooling, with Prism as its AI layer.
+                </p>
+            </div>
+
+            <div className="kit-families">
+                {kit.families.map((f) => (
+                    <Card key={f.key} className="kit-card" data-kit-family={f.key}>
+                        <Card.Body className="kit-card-body">
+                            <div className={`ic ${f.tone}`}>
+                                <Icon name={f.icon} />
+                            </div>
+                            <h3>{f.title}</h3>
+                            <p>{f.body}</p>
+                        </Card.Body>
+                    </Card>
+                ))}
+            </div>
+
+            <Card className="kit-prism" data-kit-family="prism">
+                <Card.Body className="kit-prism-body">
+                    <div className="kit-prism-head">
+                        <div className="ic t-violet">
+                            <Icon name="sparkles" />
+                        </div>
+                        <div>
+                            <span className="kit-kicker">{kit.prism.eyebrow}</span>
+                            <h3>{kit.prism.title}</h3>
+                        </div>
+                    </div>
+                    <p>{kit.prism.body}</p>
+                    <ul className="kit-chips" aria-label="Prism capabilities">
+                        {kit.prism.capabilities.map((c) => (
+                            <li key={c}>
+                                <Badge color="violet" variant="soft">
+                                    {c}
+                                </Badge>
+                            </li>
+                        ))}
+                    </ul>
+                    <p className="kit-langs">
+                        Ships for{" "}
+                        {kit.prism.languages.map((l, i) => (
+                            <span key={l}>
+                                {i > 0 && (i === kit.prism.languages.length - 1 ? " and " : ", ")}
+                                <strong>{l}</strong>
+                            </span>
+                        ))}
+                        .
+                    </p>
+                </Card.Body>
+            </Card>
+
+            <div className="kit-mirrors">
+                <div>
+                    <h3>One UI, your backend.</h3>
+                    <p>{kit.mirrors.body}</p>
+                    <ul className="kit-chips" aria-label="Languages">
+                        {kit.mirrors.languages.map((l) => (
+                            <li key={l}>
+                                <Badge color="blue" variant="soft">
+                                    {l}
+                                </Badge>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <span className="kit-kicker">In PHP, Node and Python</span>
+                    <ul className="kit-list">
+                        {kit.mirrors.examples.map((e) => (
+                            <li key={e}>
+                                <Icon name="check" />
+                                {e}
+                            </li>
+                        ))}
+                    </ul>
+                    <p className="kit-langs">
+                        Published to {kit.mirrors.registries.join(", ")}.
+                    </p>
+                </div>
+            </div>
+
+            <div className="kit-start-head">
+                <h3>Start building.</h3>
+                <Button
+                    href={KIT_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    color="blue"
+                    iconTrailing="arrow-up-right"
+                >
+                    Explore the kit
+                </Button>
+            </div>
+            <div className="kit-start">
+                {kit.start.map((s) => (
+                    <Card key={s.title} className="kit-card">
+                        <Card.Body className="kit-card-body">
+                            <div className="kit-start-title">
+                                <Icon name={s.icon} />
+                                <h4>{s.title}</h4>
+                            </div>
+                            <p>{s.body}</p>
+                            {s.command && <code className="kit-cmd">{s.command}</code>}
+                            {s.href && (
+                                <a className="kit-link" href={s.href} target="_blank" rel="noreferrer">
+                                    {s.href.replace("https://", "")}
+                                    <Icon name="arrow-up-right" />
+                                </a>
+                            )}
+                        </Card.Body>
+                    </Card>
+                ))}
+            </div>
+        </section>
+    );
 }
 
 const FOUNDATIONS = [
@@ -401,7 +547,7 @@ function WaitlistForm({ submitLabel, submitted, onSubmitted }: WaitlistFormProps
     );
 }
 
-export default function Home() {
+export default function Home({ kit }: { kit: Kit }) {
     const { props } = usePage<SharedProps & Record<string, unknown>>();
     const flashMessage = props.flash?.message;
 
@@ -513,6 +659,8 @@ export default function Home() {
                     ))}
                 </div>
             </section>
+
+            <KitSection kit={kit} />
 
             <section id="community" className="why">
                 <div className="wrap">
